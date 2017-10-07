@@ -1,12 +1,20 @@
+'use strict';
+
 const express = require('express');
-const app = express();
-const fs = require('fs');
 const bodyParser = require('body-parser');
-const luhn = require('./libs/luhn.js');
-const DATA_SOURCE = './source/cards.json';
-const getCards = () => require(DATA_SOURCE);
+
+const getCards = require('./controllers/get-cards');
+const deleteCard = require('./controllers/delete-card');
+const addCard = require('./controllers/add-card');
+const errorThrower = require('./controllers/error');
+
+const app = express();
+
+const port = 3000;
 
 app.use(express.static('public'));
+app.use(bodyParser.json());
+app.param(['id'], (req, res, next) => next());
 
 app.get('/', (req, res) => {
 	res.send(`<!doctype html>
@@ -20,65 +28,11 @@ app.get('/', (req, res) => {
 	</html>`);
 });
 
-app.get('/error', (req, res) => {
-	throw Error('Oops!');
-});
+app.get('/cards', getCards);
+app.post('/cards', addCard);
+app.delete('/cards/:id', deleteCard);
+app.all('/error', errorThrower);
 
-app.get('/transfer', (req, res) => {
-	const {amount, from, to} = req.query;
-
-	res.json({
-		result: 'success',
-		amount,
-		from,
-		to
-	});
-});
-
-
-app.get('/cards', (req, res) => res.json(getCards()));
-
-app.use(bodyParser.json());
-
-app.post('/cards', (req, res)=> {
-	const card = req.body;
-	const validCard = card && card.hasOwnProperty('cardNumber') && card.hasOwnProperty('balance') && /^[0-9]+$/.test(card.cardNumber) && luhn(card.cardNumber) && /^[0-9]+$/.test(card.balance);
-	if (!validCard) {
-		res.statusCode = 400;
-		return res.end('400 Bad request');
-	}
-	let cards = getCards();
-	card.id = cards.length+1;
-	cards.push(card);
-	fs.writeFile(DATA_SOURCE, JSON.stringify(cards, null, 4), (err) => {
-		if (err) throw err;
-		res.json(card);
-		console.log('Changes saved! Added card with id '+card.id+'.');
-	});
-});
-
-app.delete('/cards/:id', (req, res) => {
-	const cardID = Number(req.params['id']);
-	let cards = getCards();
-	const card = cards.find((card) => card.id === cardID);
-	if (typeof card === 'undefined') {
-		throw new Error('Card not found', 404);
-	} else {
-		const index = cards.indexOf(card);
-		console.log(card, index);
-		console.log(cards[index]);
-		cards.splice(index, 1);
-		fs.writeFile(DATA_SOURCE, JSON.stringify(cards, null, 4), (err) => {
-			if (err) {
-				throw err;
-				res.sendStatus(err.statusCode);
-			} else {
-				res.sendStatus(200);
-			}
-		});
-	}
-});
-
-app.listen(3000, () => {
-	console.log('YM Node School App listening on port 3000!');
+app.listen(port, () => {
+	console.log(`YM Node School App listening on port ${port}!`);
 });
