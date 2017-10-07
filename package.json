@@ -1,0 +1,19 @@
+{
+  "name": "nskyes-node-school-wallet-app",
+  "version": "1.0.0",
+  "description": "Yandex Money Node School wallet app",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/NSkye"
+  },
+  "author": "NSkye",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.1",
+    "koa": "^2.3.0"
+  }
+}
