@@ -4,7 +4,7 @@ const fileTransactionsModel = require('./common/fileTransactionsModel');
 
 class Cards extends fileTransactionsModel {
   constructor() {
-    super('cards.json');
+    super('transactions.json');
   }
 }
 

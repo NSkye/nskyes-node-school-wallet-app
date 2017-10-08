@@ -5,7 +5,7 @@ class Model {
   async deleteCard(data){};
 
   async getTransaction(id){};
-  async getTransactions(id){};
+  async getTransactions(){};
   async addTransaction(data){};
 }
 
