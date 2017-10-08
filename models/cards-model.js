@@ -1,11 +1,10 @@
 'use strict';
 
-const fileCardsModel = require('./common/fileCardsModel');
+const fileCardsModel = require('./common/file-cards-model');
 
 class Cards extends fileCardsModel {
   constructor() {
     super('cards.json');
-    this.cardIDs = this.dataSource.map((item) => item.id);
   }
 }
 

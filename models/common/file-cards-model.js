@@ -1,14 +1,12 @@
-const path = require('path');
-const fs = require('fs');
-const Model = require('./model');
+const fileModel = require('./file-model');
+
 const luhn = require('../../libs/luhn.js')
 const ApplicationError = require('../../libs/application-error')
 
-class fileCardsModel extends Model {
+class fileCardsModel extends fileModel {
   constructor(sourceFile) {
-    super();
-    this.dataSourceFile = path.join(__dirname, '..', '..', 'source', 'data', sourceFile);
-    this.dataSource = require(this.dataSourceFile);
+    super(sourceFile);
+    this.cardIDs = this.dataSource.map((item) => item.id);
   }
 
   async getCard (id) {
@@ -53,12 +51,6 @@ class fileCardsModel extends Model {
     const index = this.dataSource.indexOf(card);
     this.dataSource.splice(index, 1);
     await this.saveUpdates();
-  }
-
-  async saveUpdates() {
-    return new Promise(resolve =>
-      fs.writeFile(this.dataSourceFile, JSON.stringify(this.dataSource, null, 4),
-      resolve));
   }
 }
 

@@ -1,6 +1,6 @@
 'use strict';
 
-const cardsModel = require('../../models/cardsModel');
+const cardsModel = require('../../models/cards-model');
 
 module.exports = async (ctx) => {
   const id = Number(ctx.params.id);
@@ -8,9 +8,13 @@ module.exports = async (ctx) => {
     await new cardsModel().deleteCard(id);
     ctx.status = 200;
   } catch (e) {
-    if (e.status)
-      ctx.throw(e.status, e.message);
-    else
-      ctx.throw(500, e.message);
+    if (e.status) {
+      ctx.status = e.status;
+      ctx.body = e.message;
+    }
+    else {
+      ctx.status = 500;
+      ctx.body = e.message;
+    }
   }
 };

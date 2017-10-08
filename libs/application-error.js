@@ -1,12 +1,12 @@
 'use strict';
 
 class ApplicationError extends Error {
-  constructor(message, status) {
+  constructor(message, statusCode) {
     super(message);
-    this.Status = status;
+    this.statusCode = statusCode;
   }
   get status () {
-    return this.Status;
+    return this.statusCode;
   }
 };
 
