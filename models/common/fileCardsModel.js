@@ -11,6 +11,15 @@ class fileCardsModel extends Model {
     this.dataSource = require(this.dataSourceFile);
   }
 
+  async getCard (id) {
+    const card = this.dataSource.find((card) => card.id === id);
+    if (typeof card === 'undefined') {
+      throw new ApplicationError('Card not found', 404);
+    } else {
+      return await card;
+    }
+  }
+
   async getCards () {
     console.log('getting cards...');
     return await this.dataSource;
@@ -26,7 +35,10 @@ class fileCardsModel extends Model {
                     && /^[0-9]+$/.test(card.balance);
 
     if (isValid) {
-      card.id = Math.max.apply(Math, this.cardIDs)+1;
+      if (!this.cardIDs.length)
+        card.id = 1;
+      else
+        card.id = Math.max.apply(Math, this.cardIDs)+1;
       this.dataSource.push(card);
       await this.saveUpdates();
       return card;
@@ -37,15 +49,10 @@ class fileCardsModel extends Model {
 
   async deleteCard (id) {
     console.log('removing card...')
-    const card = this.dataSource.find((card) => card.id === id);
-
-    if (typeof card === 'undefined') {
-      throw new ApplicationError('Card not found', 404);
-    } else {
-      const index = this.dataSource.indexOf(card);
-      this.dataSource.splice(index, 1);
-      await this.saveUpdates();
-    }
+    const card = await this.getCard(id);
+    const index = this.dataSource.indexOf(card);
+    this.dataSource.splice(index, 1);
+    await this.saveUpdates();
   }
 
   async saveUpdates() {

@@ -2,41 +2,6 @@
     {
         "cardNumber": "4561261212345467",
         "balance": "42",
-        "id": 3
-    },
-    {
-        "cardNumber": "4561261212345467",
-        "balance": "42",
-        "id": 5
-    },
-    {
-        "cardNumber": "4561261212345467",
-        "balance": "42",
-        "id": 7
-    },
-    {
-        "cardNumber": "4561261212345467",
-        "balance": "42",
-        "id": 10
-    },
-    {
-        "cardNumber": "4561261212345467",
-        "balance": "42",
-        "id": 11
-    },
-    {
-        "cardNumber": "4561261212345467",
-        "balance": "42",
-        "id": 12
-    },
-    {
-        "cardNumber": "4561261212345467",
-        "balance": "42",
-        "id": 15
-    },
-    {
-        "cardNumber": "4561261212345467",
-        "balance": "42",
-        "id": 16
+        "id": 1
     }
 ]
