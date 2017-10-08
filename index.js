@@ -8,6 +8,9 @@ const serve = require('koa-static');
 const getCards = require('./controllers/cards/get-cards');
 const deleteCard = require('./controllers/cards/delete-card');
 const addCard = require('./controllers/cards/add-card');
+const addTransaction = require('./controllers/transactions/add-transaction');
+const getCardTransactions = require('./controllers/transactions/get-card-transactions');
+const getAllTransactions = require('./controllers/transactions/get-all-transactions');
 const errorThrower = require('./controllers/error');
 
 const app = new Koa();
@@ -42,6 +45,11 @@ router.get('/cards', getCards);
 router.post('/cards', addCard);
 router.delete('/cards/:id', deleteCard);
 router.all('/error', errorThrower);
+
+router.post('/cards/:id/transactions', addTransaction);
+router.get('/cards/:id/transactions', getCardTransactions);
+router.get('/cards/transactions', getAllTransactions);
+
 
 app.listen(port, () => {
 	console.log(`App is listening on port ${port}!`);

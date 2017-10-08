@@ -5,7 +5,7 @@ const cardsModel = require('../../models/cards-model');
 module.exports = async (ctx) => {
   const id = Number(ctx.params.id);
   try {
-    await new cardsModel().deleteCard(id);
+    await new cardsModel().deleteItem(id);
     ctx.status = 200;
   } catch (e) {
     if (e.status) {
