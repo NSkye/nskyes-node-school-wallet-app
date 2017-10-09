@@ -1,5 +1,6 @@
 const fileModel = require('./file-model');
 
+const fs = require('fs');
 const path = require('path');
 const ApplicationError = require('../../libs/application-error');
 
@@ -7,10 +8,31 @@ class fileTransactionsModel extends fileModel {
   constructor(sourceFile, cardsFile) {
     super(sourceFile);
     this.cardsFile = path.join(__dirname, '..', '..', 'source', 'data', cardsFile);
-    this.cardsSource = require(this.cardsFile);
-    this.cardIDs = this.cardsSource.map((card) => card.id);
+    this.cardsSource = null;//require(this.cardsFile);
+    this.cardIDs = null;//this.cardsSource.map((card) => card.id);
   }
+  async readCardsFile() {
+    if(!this.cardsSource) {
+      return new Promise((resolve, reject) => {
+        fs.readFile(this.cardsFile, (e, data) => {
+          if(e)
+            return reject(e);
+          try {
+            this.cardsSource = JSON.parse(data);
+            this.cardIDs = this.cardsSource.map((item) => item.id);
+            return resolve();
+          } catch (err) {
+            return reject(err);
+          }
+        });
+      });
+    }
+    return this.cardsSource;
+  }
+
   async addTransaction(transaction, cardID) {
+    await this.readFile();
+    await this.readCardsFile();
     const transactionTypes = ["paymentMobile", "prepaidCard", "card2Card"];
     const isValid = transaction && cardID
       && this.cardIDs.indexOf(cardID) != -1
@@ -32,6 +54,8 @@ class fileTransactionsModel extends fileModel {
   }
 
   async getTransactions(cardID) {
+    await this.readFile();
+    await this.readCardsFile();
     const isValid = this.cardIDs.indexOf(cardID) != -1;
     if (isValid) {
       const cardTransactions = this.dataSource.map((item) => {

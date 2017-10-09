@@ -1,6 +1,5 @@
 'use strict';
 
-//const express = require('express');
 const Koa = require('koa');
 const bodyParser = require('koa-bodyparser')();
 const router = require('koa-router')();
@@ -18,9 +17,6 @@ const app = new Koa();
 
 const port = 3000;
 
-//app.use(express.static('public'));
-//app.use(bodyParser.json());
-//app.param(['id'], (req, res, next) => next());
 router.param('id', (id, ctx, next) => next());
 
 app.use(async(ctx, next) => {
@@ -38,6 +34,7 @@ app.use(async(ctx, next) => {
 		ctx.body = `Error ${e.message}`;
 	}
 })
+
 app.use(bodyParser);
 app.use(router.routes());
 app.use(serve('./public'));

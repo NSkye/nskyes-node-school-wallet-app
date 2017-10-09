@@ -10,6 +10,7 @@ class fileCardsModel extends fileModel {
 
   async addCard (card) {
     console.log('adding card...')
+    await this.readFile();
     const isValid = card
       && card.hasOwnProperty('cardNumber')
       && card.hasOwnProperty('balance')
