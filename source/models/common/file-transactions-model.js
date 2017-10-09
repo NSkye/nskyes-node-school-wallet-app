@@ -2,7 +2,7 @@ const fileModel = require('./file-model');
 
 const fs = require('fs');
 const path = require('path');
-const ApplicationError = require('../../libs/application-error');
+const ApplicationError = require('../../../libs/application-error');
 
 class fileTransactionsModel extends fileModel {
   constructor(sourceFile, cardsSource = null) {

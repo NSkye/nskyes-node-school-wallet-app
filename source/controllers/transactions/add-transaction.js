@@ -7,7 +7,7 @@ module.exports = async(ctx) => {
   const transaction = JSON.parse(JSON.stringify(ctx.request.body));
   console.log(typeof transaction);
   const cardID = Number(ctx.params.id);
-  const cards = await new cardsModel.getItems();
+  const cards = await new cardsModel().getItems();
   try {
     ctx.body = await new transactionsModel(cards).addTransaction(transaction, cardID);
   } catch (e) {

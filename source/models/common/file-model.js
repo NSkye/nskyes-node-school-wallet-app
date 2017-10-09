@@ -1,12 +1,12 @@
 const path = require('path');
 const fs = require('fs');
 const Model = require('./model');
-const ApplicationError = require('../../libs/application-error')
+const ApplicationError = require('../../../libs/application-error')
 
 class fileModel extends Model {
   constructor (sourceFile) {
     super();
-    this.dataSourceFile = path.join(__dirname, '..', '..', 'source', 'data', sourceFile);
+    this.dataSourceFile = path.join(__dirname, '..', '..', 'data', sourceFile);
     this.dataSource = null;//require(this.dataSourceFile);
     this.itemIDs = null;//this.dataSource.map((item) => item.id);
   }

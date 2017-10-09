@@ -1,7 +1,7 @@
 const fileModel = require('./file-model');
 
-const luhn = require('../../libs/luhn.js')
-const ApplicationError = require('../../libs/application-error')
+const luhn = require('../../../libs/luhn.js')
+const ApplicationError = require('../../../libs/application-error')
 
 class fileCardsModel extends fileModel {
   constructor(sourceFile) {
