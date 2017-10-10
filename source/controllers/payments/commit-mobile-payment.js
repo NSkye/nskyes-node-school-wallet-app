@@ -2,6 +2,10 @@
 
 const transactionsModel = require('../../models/transactions-model');
 const cardsModel = require('../../models/cards-model');
+const paymentTypes = {
+  "pay": "paymentMobile",
+  "transfer": "card2card"
+};
 
 module.exports = async (ctx) => {
   const cardID = Number(ctx.params.id);
@@ -9,7 +13,7 @@ module.exports = async (ctx) => {
   const transactions = await new transactionsModel();
   const payment = ctx.request.body;
   try {
-   await  new cardsModel().changeAmount(cardID, Number(payment.amount));
+   await  new cardsModel().changeAmount(cardID, Number(payment.amount) * -1);
    const transaction = await new transactionsModel(cards)
     .addTransaction({
       data: +79000000000,
@@ -25,6 +29,6 @@ module.exports = async (ctx) => {
     else {
       ctx.status = 500;
       ctx.body = e.message;
+    }
   }
-}
 };

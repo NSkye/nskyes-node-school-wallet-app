@@ -12,6 +12,8 @@ const getCardTransactions = require('./controllers/transactions/get-card-transac
 const getAllTransactions = require('./controllers/transactions/get-all-transactions');
 const deleteTransaction = require('./controllers/transactions/delete-transaction');
 const commitPayment = require('./controllers/payments/commit-mobile-payment');
+const commitTransfer = require('./controllers/payments/commit-transfer');
+const commitPrepay = require('./controllers/payments/commit-prepay');
 const errorThrower = require('./controllers/error');
 
 const app = new Koa();
@@ -51,6 +53,8 @@ router.get('/cards/transactions', getAllTransactions);
 router.delete('/transactions/:id', deleteTransaction);
 
 router.post('/cards/:id/pay', commitPayment);
+router.post('/cards/:id/transfer', commitTransfer);
+router.post('/cards/:id/prepaidcard', commitPrepay);
 
 
 app.listen(port, () => {
