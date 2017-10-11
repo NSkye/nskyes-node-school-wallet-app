@@ -14,14 +14,14 @@ module.exports = async (ctx) => {
    await new cardsModel().changeAmount(to, amount);
    const transactionFrom = await new transactionsModel(cards)
     .addTransaction({
-      data: 00000000000,
-      type: 'card2card',
+      data: '00000000000',
+      type: 'card2Card',
       sum: amount * -1
     }, cardID);
   const transactionTo = await new transactionsModel(cards)
     .addTransaction({
-      data: 00000000000,
-      type: 'card2card',
+      data: '00000000000',
+      type: 'card2Card',
       sum: amount
     }, to);
    ctx.body = [transactionFrom, transactionTo];

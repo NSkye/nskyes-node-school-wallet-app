@@ -11,7 +11,7 @@ module.exports = async (ctx) => {
    await  new cardsModel().changeAmount(cardID, Number(payment.amount));
    const transaction = await new transactionsModel(cards)
     .addTransaction({
-      data: 00000000000,
+      data: '00000000000',
       type: 'paymentMobile',
       sum: (payment.amount)
     }, cardID);

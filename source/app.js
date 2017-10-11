@@ -13,6 +13,7 @@ const getAllTransactions = require('./controllers/transactions/get-all-transacti
 const deleteTransaction = require('./controllers/transactions/delete-transaction');
 const commitPayment = require('./controllers/payments/commit-mobile-payment');
 const commitTransfer = require('./controllers/payments/commit-transfer');
+const commitPrepay = require('./controllers/payments/commit-prepay');
 const errorThrower = require('./controllers/error');
 
 const app = new Koa();

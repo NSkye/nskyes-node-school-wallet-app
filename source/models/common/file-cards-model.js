@@ -35,7 +35,7 @@ class fileCardsModel extends fileModel {
     }
     const card = await this.getItem(id, 'Item');
     const index = this.dataSource.indexOf(card);
-    card.balance += amount;
+    card.balance = Number(card.balance) + Number(amount);
     this.dataSource.splice(index, 1, card);
     await this.saveUpdates();
   }

@@ -20,7 +20,7 @@ class fileModel extends Model {
           try {
             console.log(this.dataSourceFile);
             this.dataSource = JSON.parse(data);
-            this.itemIDs = this.dataSource.map((item) => item.id);
+            this.itemIDs = this.dataSource.map((item) => Number(item.id));
             return resolve();
           } catch (err) {
             return reject(err);

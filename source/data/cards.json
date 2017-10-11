@@ -1,7 +1,7 @@
 [
     {
         "cardNumber": "4561261212345467",
-        "balance": -168,
+        "balance": -126,
         "id": 2
     },
     {
@@ -11,12 +11,12 @@
     },
     {
         "cardNumber": "4561261212345467",
-        "balance": "42",
+        "balance": 210,
         "id": 8
     },
     {
         "cardNumber": "4561261212345467",
-        "balance": "42",
+        "balance": -168,
         "id": 9
     },
     {
@@ -58,5 +58,10 @@
         "cardNumber": "4561261212345467",
         "balance": "42",
         "id": 18
+    },
+    {
+        "cardNumber": "4561261212345467",
+        "balance": 42,
+        "id": 19
     }
 ]
