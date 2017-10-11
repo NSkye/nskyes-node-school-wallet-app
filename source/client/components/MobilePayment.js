@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-
+import 'whatwg-fetch';
 import MobilePaymentContract from './MobilePaymentContract';
 import MobilePaymentSuccess from './MobilePaymentSuccess';
 
@@ -14,7 +14,6 @@ class MobilePayment extends Component {
 	 */
 	constructor(props) {
 		super(props);
-
 		this.state = {stage: 'contract'};
 	}
 
@@ -23,10 +22,33 @@ class MobilePayment extends Component {
 	 * @param {Object} transaction данные о транзакции
 	 */
 	onPaymentSuccess(transaction) {
-		this.setState({
-			stage: 'success',
-			transaction
-		});
+		const sum = transaction.sum;
+		const that = this;
+		const success = null;
+		fetch('http://localhost:3000/cards/20/pay', {
+			method: 'POST',
+	 		headers: {
+		 		"Content-type": "application/json"
+	 		},
+	 		body: JSON.stringify({
+		    amount: sum,
+		  })
+		})
+	  .then(function(response) {
+	    return response.json();
+	  }).then(function(json) {
+	    console.log('parsed json', json);
+			transaction.transactionID = json.id;
+			transaction.sum = json.sum;
+			transaction.phoneNumber = json.data;
+			that.setState({
+				stage: 'success',
+				transaction
+			});
+	  }).catch(function(ex) {
+	    console.log('Error', ex);
+			alert("Ошибка. Платеж не был произведен.")
+	  })
 	}
 
 	/**

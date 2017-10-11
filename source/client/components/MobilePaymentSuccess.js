@@ -72,7 +72,7 @@ const RepeatPayment = styled.button`
 `;
 
 const MobilePaymentSuccess = ({transaction, repeatPayment}) => {
-	const {sum, phoneNumber, commission} = transaction;
+	const {sum, phoneNumber, commission, transactionID} = transaction;
 
 	return (
 		<MobilePaymentLayout>
@@ -82,7 +82,7 @@ const MobilePaymentSuccess = ({transaction, repeatPayment}) => {
 			<CommissionTips>В том числе комиссия {commission} ₽</CommissionTips>
 			<Section>
 				<SectionLabel>Номер транзакции</SectionLabel>
-				<SectionValue>200580211311</SectionValue>
+				<SectionValue>{transactionID}</SectionValue>
 			</Section>
 			<Section>
 				<SectionLabel>Номер телефона</SectionLabel>

@@ -15,6 +15,7 @@ function getExternals() {
 module.exports = [
 	{
 		entry: {
+			fetch: 'whatwg-fetch',
 			index: './source/views/index.src.js'
 		},
 		module: {
