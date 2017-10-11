@@ -15,7 +15,7 @@ class fileCardsModel extends fileModel {
       && card.hasOwnProperty('cardNumber')
       && card.hasOwnProperty('balance')
       && /^[0-9]+$/.test(card.cardNumber)
-      && luhn(card.cardNumber)
+      //&& luhn(card.cardNumber)
       && /^[0-9]+$/.test(card.balance);
 
     if (isValid) {

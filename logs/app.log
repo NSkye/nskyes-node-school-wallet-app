@@ -1,0 +1,45 @@
+[2017-10-11 16:00:27.230] [INFO] app - Application started
+[2017-10-11 16:00:33.583] [ERROR] app - Error detected TypeError: ctx.cardsModel.loadFile is not a function
+    at app.use (/home/skye/Documents/Yandex/nskyes-node-school-wallet-app/source/app.js:111:18)
+    at dispatch (/home/skye/Documents/Yandex/nskyes-node-school-wallet-app/node_modules/koa-compose/index.js:42:32)
+    at next (/home/skye/Documents/Yandex/nskyes-node-school-wallet-app/node_modules/koa-compose/index.js:43:18)
+    at app.use (/home/skye/Documents/Yandex/nskyes-node-school-wallet-app/source/app.js:97:9)
+    at dispatch (/home/skye/Documents/Yandex/nskyes-node-school-wallet-app/node_modules/koa-compose/index.js:42:32)
+    at next (/home/skye/Documents/Yandex/nskyes-node-school-wallet-app/node_modules/koa-compose/index.js:43:18)
+    at app.use (/home/skye/Documents/Yandex/nskyes-node-school-wallet-app/source/app.js:89:8)
+    at dispatch (/home/skye/Documents/Yandex/nskyes-node-school-wallet-app/node_modules/koa-compose/index.js:42:32)
+    at next (/home/skye/Documents/Yandex/nskyes-node-school-wallet-app/node_modules/koa-compose/index.js:43:18)
+    at serve (/home/skye/Documents/Yandex/nskyes-node-school-wallet-app/node_modules/koa-static/index.js:53:15)
+[2017-10-11 16:00:33.588] [INFO] app - GET /null - 5ms
+[2017-10-11 16:00:33.596] [ERROR] app - Error detected TypeError: ctx.cardsModel.loadFile is not a function
+    at app.use (/home/skye/Documents/Yandex/nskyes-node-school-wallet-app/source/app.js:111:18)
+    at dispatch (/home/skye/Documents/Yandex/nskyes-node-school-wallet-app/node_modules/koa-compose/index.js:42:32)
+    at next (/home/skye/Documents/Yandex/nskyes-node-school-wallet-app/node_modules/koa-compose/index.js:43:18)
+    at app.use (/home/skye/Documents/Yandex/nskyes-node-school-wallet-app/source/app.js:97:9)
+    at dispatch (/home/skye/Documents/Yandex/nskyes-node-school-wallet-app/node_modules/koa-compose/index.js:42:32)
+    at next (/home/skye/Documents/Yandex/nskyes-node-school-wallet-app/node_modules/koa-compose/index.js:43:18)
+    at app.use (/home/skye/Documents/Yandex/nskyes-node-school-wallet-app/source/app.js:89:8)
+    at dispatch (/home/skye/Documents/Yandex/nskyes-node-school-wallet-app/node_modules/koa-compose/index.js:42:32)
+    at next (/home/skye/Documents/Yandex/nskyes-node-school-wallet-app/node_modules/koa-compose/index.js:43:18)
+    at serve (/home/skye/Documents/Yandex/nskyes-node-school-wallet-app/node_modules/koa-static/index.js:53:15)
+[2017-10-11 16:00:33.597] [INFO] app - GET /assets/null-history.svg - 0ms
+[2017-10-11 16:03:23.593] [INFO] app - Application started
+[2017-10-11 16:03:27.772] [INFO] app - GET /null - 6ms
+[2017-10-11 16:03:27.773] [INFO] app - GET /assets/null-history.svg - 1ms
+[2017-10-11 16:03:29.893] [INFO] app - GET /null - 3ms
+[2017-10-11 16:03:29.894] [INFO] app - GET /assets/null-history.svg - 1ms
+[2017-10-11 16:06:14.404] [INFO] app - Application started
+[2017-10-11 16:07:06.816] [INFO] app - Application started
+[2017-10-11 16:07:32.405] [INFO] app - Application started
+[2017-10-11 16:07:35.890] [INFO] app - GET /null - 7ms
+[2017-10-11 16:07:35.891] [INFO] app - GET /assets/null-history.svg - 2ms
+[2017-10-11 16:08:43.324] [INFO] app - Application started
+[2017-10-11 16:08:49.284] [INFO] app - GET /null - 6ms
+[2017-10-11 16:08:49.286] [INFO] app - GET /assets/null-history.svg - 2ms
+[2017-10-11 16:08:51.220] [INFO] app - GET /null - 1ms
+[2017-10-11 16:08:51.224] [INFO] app - GET /assets/null-history.svg - 0ms
+[2017-10-11 16:09:22.831] [INFO] app - Application started
+[2017-10-11 16:09:38.790] [INFO] app - Application started
+[2017-10-11 16:09:42.765] [INFO] app - GET /null - 7ms
+[2017-10-11 16:09:44.340] [INFO] app - GET /null - 0ms
+[2017-10-11 16:09:44.344] [INFO] app - GET /assets/null-history.svg - 1ms
