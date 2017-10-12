@@ -48,6 +48,7 @@ class Prepaid extends Component {
 		  })
 			.then((json) => {
 					console.log(json);
+					transaction.number = from.number;
 					this.setState({
 						stage: 'success',
 						transaction
@@ -57,10 +58,7 @@ class Prepaid extends Component {
 		    console.log('Error', ex);
 				alert("Ошибка. Платеж не был произведен.")
 		  })
-		}/*
-		console.log("Selected card 1 (to)", this.props.activeCard);
-		console.log("Selected card 2 (from)", this.props.inactiveCardsList[this.state.activeCardIndex]);
-		console.log(transaction);*/
+		}
 	}
 
 	setActiveCardIndex(index) {

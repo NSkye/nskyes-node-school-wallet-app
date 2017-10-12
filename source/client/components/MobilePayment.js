@@ -23,7 +23,6 @@ class MobilePayment extends Component {
 	 */
 	onPaymentSuccess(transaction) {
 		const sum = transaction.sum;
-		const that = this;
 		const success = null;
 		const cardID = this.props.activeCard.id;
 		const url = `http://localhost:3000/cards/${cardID}/pay`;
@@ -36,19 +35,19 @@ class MobilePayment extends Component {
 		    amount: sum,
 		  })
 		})
-	  .then(function(response) {
+	  .then((response) => {
 	    return response.json();
-	  }).then(function(json) {
+	  }).then((json) => {
 	    console.log('parsed json', json);
 			transaction.transactionID = json.id;
 			transaction.sum = json.sum;
 			transaction.phoneNumber = json.data;
-			that.setState({
+			this.setState({
 				stage: 'success',
 				transaction
 			});
-			that.props.refreshData();
-	  }).catch(function(ex) {
+			this.props.refreshData();
+	  }).catch((ex) => {
 	    console.log('Error', ex);
 			alert("Ошибка. Платеж не был произведен.")
 	  })
