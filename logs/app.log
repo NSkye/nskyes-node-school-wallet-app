@@ -727,3 +727,17 @@
 [2017-10-12 11:19:17.318] [INFO] app - GET /null - 1ms
 [2017-10-12 11:19:17.318] [INFO] app - GET /assets/null-history.svg - 1ms
 [2017-10-12 11:19:17.320] [INFO] app - GET /index.es.js.map - 1ms
+[2017-10-12 11:26:03.866] [INFO] app - Application started
+[2017-10-12 11:26:10.657] [INFO] app - GET /null - 6ms
+[2017-10-12 11:26:11.861] [INFO] app - GET /null - 1ms
+[2017-10-12 11:26:11.870] [INFO] app - GET /assets/null-history.svg - 1ms
+[2017-10-12 11:26:17.390] [INFO] app - GET /index.es.js.map - 0ms
+[2017-10-12 11:26:17.396] [INFO] app - GET /null - 1ms
+[2017-10-12 11:26:17.398] [INFO] app - GET /assets/null-history.svg - 1ms
+[2017-10-12 11:28:48.284] [INFO] app - Application started
+[2017-10-12 11:28:52.154] [INFO] app - GET /null - 3ms
+[2017-10-12 11:28:53.071] [INFO] app - GET /null - 1ms
+[2017-10-12 11:28:53.073] [INFO] app - GET /assets/null-history.svg - 1ms
+[2017-10-12 11:28:56.068] [INFO] app - GET /index.es.js.map - 1ms
+[2017-10-12 11:28:56.081] [INFO] app - GET /null - 2ms
+[2017-10-12 11:28:56.081] [INFO] app - GET /assets/null-history.svg - 2ms

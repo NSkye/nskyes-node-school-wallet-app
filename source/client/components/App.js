@@ -72,31 +72,31 @@ class App extends Component {
 	}
 
 	refreshData() {
-		const that = this;
 		fetch("http://localhost:3000/cards")
-	  .then(function(response) {
+	  .then((response) => {
 	    return response.json();
-	  }).then(function(json) {
-			let newCardsList = that.prepareCardsData(json);
-			that.setState({
+	  }).then((json) => {
+			let newCardsList = this.prepareCardsData(json);
+			this.setState({
 				cardsList: newCardsList
 			});
 			console.log("Данные карт обновлены");
 			return fetch("http://localhost:3000/cards/transactions")
 	  })
-		.then(function(response) {
+		.then((response) => {
 			return response.json();
-		}).then(function(json) {
+		})
+		.then((json) => {
 			let newCardHistory = json.map((data) => {
-				const card = that.state.cardsList.find((card) => card.id === data.cardId);
+				const card = this.state.cardsList.find((card) => card.id === data.cardId);
 				return card ? Object.assign({}, data, {card}) : data;
 			});
-			that.setState({
+			this.setState({
 				cardHistory: newCardHistory
 			});
 			console.log("Данные транзакций обновлены");
 		})
-		.catch(function(ex) {
+		.catch((ex) => {
 			console.log("Ошибка при обновлении данных", ex);
 	  })
 	}
@@ -132,7 +132,7 @@ class App extends Component {
 
 	/**
 	 * Обработчик переключения карты
-	 *
+	 *0
 	 * @param {Number} activeCardIndex индекс выбранной карты
 	 */
 	onCardChange(activeCardIndex) {

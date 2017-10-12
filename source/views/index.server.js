@@ -4884,7 +4884,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 	}];
 });
 
-var Wallet = /*#__PURE__*/(0, _react4.default)('div', 'css-Wallet-1rtyb9t0', [], [], function createEmotionStyledRules() {
+var Wallet = /*#__PURE__*/(0, _react4.default)('div', 'css-Wallet-44ch8w0', [], [], function createEmotionStyledRules() {
 	return {
 		'display': '-webkit-box; display: -ms-flexbox; display: flex',
 		'minHeight': '100%',
@@ -4892,7 +4892,7 @@ var Wallet = /*#__PURE__*/(0, _react4.default)('div', 'css-Wallet-1rtyb9t0', [],
 	};
 });
 
-var CardPane = /*#__PURE__*/(0, _react4.default)('div', 'css-CardPane-1rtyb9t1', [], [], function createEmotionStyledRules() {
+var CardPane = /*#__PURE__*/(0, _react4.default)('div', 'css-CardPane-44ch8w1', [], [], function createEmotionStyledRules() {
 	return {
 		'WebkitBoxFlex': '1',
 		'msFlexPositive': '1',
@@ -4900,7 +4900,7 @@ var CardPane = /*#__PURE__*/(0, _react4.default)('div', 'css-CardPane-1rtyb9t1',
 	};
 });
 
-var Workspace = /*#__PURE__*/(0, _react4.default)('div', 'css-Workspace-1rtyb9t2', [], [], function createEmotionStyledRules() {
+var Workspace = /*#__PURE__*/(0, _react4.default)('div', 'css-Workspace-44ch8w2', [], [], function createEmotionStyledRules() {
 	return {
 		'display': '-webkit-box; display: -ms-flexbox; display: flex',
 		'msFlexWrap': 'wrap',
@@ -4944,13 +4944,14 @@ var App = function (_Component) {
 	_createClass(App, [{
 		key: 'refreshData',
 		value: function refreshData() {
+			var _this2 = this;
 
-			var that = this;
+			//const that = this;
 			fetch("http://localhost:3000/cards").then(function (response) {
 				return response.json();
 			}).then(function (json) {
-				var newCardsList = that.prepareCardsData(json);
-				that.setState({
+				var newCardsList = _this2.prepareCardsData(json);
+				_this2.setState({
 					cardsList: newCardsList
 				});
 				console.log("Данные карт обновлены");
@@ -4959,12 +4960,12 @@ var App = function (_Component) {
 				return response.json();
 			}).then(function (json) {
 				var newCardHistory = json.map(function (data) {
-					var card = that.state.cardsList.find(function (card) {
+					var card = _this2.state.cardsList.find(function (card) {
 						return card.id === data.cardId;
 					});
 					return card ? Object.assign({}, data, { card: card }) : data;
 				});
-				that.setState({
+				_this2.setState({
 					cardHistory: newCardHistory
 				});
 				console.log("Данные транзакций обновлены");
@@ -5007,7 +5008,7 @@ var App = function (_Component) {
 
 		/**
    * Обработчик переключения карты
-   *
+   *0
    * @param {Number} activeCardIndex индекс выбранной карты
    */
 
@@ -5027,7 +5028,7 @@ var App = function (_Component) {
 	}, {
 		key: 'render',
 		value: function render() {
-			var _this2 = this;
+			var _this3 = this;
 
 			var data = this.props.data;
 			var _state = this.state,
@@ -5051,7 +5052,7 @@ var App = function (_Component) {
 					activeCardIndex: activeCardIndex,
 					cardsList: cardsList,
 					onCardChange: function onCardChange(activeCardIndex) {
-						return _this2.onCardChange(activeCardIndex);
+						return _this3.onCardChange(activeCardIndex);
 					} }),
 				_react2.default.createElement(
 					CardPane,
@@ -5066,7 +5067,7 @@ var App = function (_Component) {
 							activeCard: activeCard,
 							inactiveCardsList: inactiveCardsList,
 							onCardChange: function onCardChange(newActiveCardIndex) {
-								return _this2.onCardChange(newActiveCardIndex);
+								return _this3.onCardChange(newActiveCardIndex);
 							}
 						}),
 						_react2.default.createElement(_.MobilePayment, { refreshData: this.refreshData.bind(this), activeCard: activeCard }),
@@ -5117,13 +5118,13 @@ module.exports = require("card-info");
 /* 129 */
 /***/ (function(module, exports) {
 
-module.exports = [{"cardNumber":"4561261212345467","balance":26,"id":19},{"cardNumber":"546925000000000","balance":-3220,"id":20},{"cardNumber":"546925000000000","balance":9,"id":21}]
+module.exports = [{"cardNumber":"4561261212345467","balance":26,"id":19},{"cardNumber":"546925000000000","balance":-3240,"id":20},{"cardNumber":"546925000000000","balance":9,"id":21}]
 
 /***/ }),
 /* 130 */
 /***/ (function(module, exports) {
 
-module.exports = [{"id":1,"cardId":1,"type":"prepaidCard","data":"220003000000003","time":"2017-08-9T05:28:31+03:00","sum":"2345"},{"data":"+79218908064","type":"paymentMobile","sum":-12,"id":2,"cardId":20,"time":"Thu Oct 12 2017 10:46:07 GMT+0300 (MSK)"},{"data":"+79218908064","type":"paymentMobile","sum":-12,"id":3,"cardId":20,"time":"Thu Oct 12 2017 10:47:32 GMT+0300 (MSK)"},{"data":"+79218908064","type":"paymentMobile","sum":-12,"id":4,"cardId":20,"time":"Thu Oct 12 2017 10:57:41 GMT+0300 (MSK)"},{"data":"+79218908064","type":"paymentMobile","sum":-12,"id":5,"cardId":20,"time":"Thu Oct 12 2017 11:01:31 GMT+0300 (MSK)"},{"data":"+79218908064","type":"paymentMobile","sum":-12,"id":6,"cardId":20,"time":"Thu Oct 12 2017 11:03:18 GMT+0300 (MSK)"},{"data":"+79218908064","type":"paymentMobile","sum":-10,"id":7,"cardId":21,"time":"Thu Oct 12 2017 11:03:43 GMT+0300 (MSK)"},{"data":"+79218908064","type":"paymentMobile","sum":-15,"id":8,"cardId":19,"time":"Thu Oct 12 2017 11:05:15 GMT+0300 (MSK)"},{"data":"+79218908064","type":"paymentMobile","sum":-12,"id":9,"cardId":20,"time":"Thu Oct 12 2017 11:12:45 GMT+0300 (MSK)"}]
+module.exports = [{"id":1,"cardId":1,"type":"prepaidCard","data":"220003000000003","time":"2017-08-9T05:28:31+03:00","sum":"2345"},{"data":"+79218908064","type":"paymentMobile","sum":-12,"id":2,"cardId":20,"time":"Thu Oct 12 2017 10:46:07 GMT+0300 (MSK)"},{"data":"+79218908064","type":"paymentMobile","sum":-12,"id":3,"cardId":20,"time":"Thu Oct 12 2017 10:47:32 GMT+0300 (MSK)"},{"data":"+79218908064","type":"paymentMobile","sum":-12,"id":4,"cardId":20,"time":"Thu Oct 12 2017 10:57:41 GMT+0300 (MSK)"},{"data":"+79218908064","type":"paymentMobile","sum":-12,"id":5,"cardId":20,"time":"Thu Oct 12 2017 11:01:31 GMT+0300 (MSK)"},{"data":"+79218908064","type":"paymentMobile","sum":-12,"id":6,"cardId":20,"time":"Thu Oct 12 2017 11:03:18 GMT+0300 (MSK)"},{"data":"+79218908064","type":"paymentMobile","sum":-10,"id":7,"cardId":21,"time":"Thu Oct 12 2017 11:03:43 GMT+0300 (MSK)"},{"data":"+79218908064","type":"paymentMobile","sum":-15,"id":8,"cardId":19,"time":"Thu Oct 12 2017 11:05:15 GMT+0300 (MSK)"},{"data":"+79218908064","type":"paymentMobile","sum":-12,"id":9,"cardId":20,"time":"Thu Oct 12 2017 11:12:45 GMT+0300 (MSK)"},{"data":"+79218908064","type":"paymentMobile","sum":-12,"id":10,"cardId":20,"time":"Thu Oct 12 2017 11:19:17 GMT+0300 (MSK)"},{"data":"+79218908064","type":"paymentMobile","sum":-8,"id":11,"cardId":20,"time":"Thu Oct 12 2017 11:26:17 GMT+0300 (MSK)"}]
 
 /***/ })
 /******/ ]);
