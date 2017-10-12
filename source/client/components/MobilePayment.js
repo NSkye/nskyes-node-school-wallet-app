@@ -47,6 +47,7 @@ class MobilePayment extends Component {
 				stage: 'success',
 				transaction
 			});
+			that.props.refreshData();
 	  }).catch(function(ex) {
 	    console.log('Error', ex);
 			alert("Ошибка. Платеж не был произведен.")

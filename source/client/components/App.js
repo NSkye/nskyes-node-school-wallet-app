@@ -11,6 +11,7 @@ import {
 	MobilePayment,
 	Withdraw
 } from './';
+import 'whatwg-fetch';
 
 import './fonts.css';
 
@@ -68,6 +69,36 @@ class App extends Component {
 			cardHistory,
 			activeCardIndex: 0
 		};
+	}
+
+	refreshData() {
+		const that = this;
+		fetch("http://localhost:3000/cards")
+	  .then(function(response) {
+	    return response.json();
+	  }).then(function(json) {
+			let newCardsList = that.prepareCardsData(json);
+			that.setState({
+				cardsList: newCardsList
+			});
+			console.log("Данные карт обновлены");
+			return fetch("http://localhost:3000/cards/transactions")
+	  })
+		.then(function(response) {
+			return response.json();
+		}).then(function(json) {
+			let newCardHistory = json.map((data) => {
+				const card = that.state.cardsList.find((card) => card.id === data.cardId);
+				return card ? Object.assign({}, data, {card}) : data;
+			});
+			that.setState({
+				cardHistory: newCardHistory
+			});
+			console.log("Данные транзакций обновлены");
+		})
+		.catch(function(ex) {
+			console.log("Ошибка при обновлении данных", ex);
+	  })
 	}
 
 	/**
@@ -133,11 +164,12 @@ class App extends Component {
 					<Workspace>
 						<History cardHistory={filteredHistory} />
 						<Prepaid
+							refreshData={this.refreshData.bind(this)}
 							activeCard={activeCard}
 							inactiveCardsList={inactiveCardsList}
 							onCardChange={(newActiveCardIndex) => this.onCardChange(newActiveCardIndex)}
 						/>
-						<MobilePayment activeCard={activeCard} />
+						<MobilePayment refreshData={this.refreshData.bind(this)} activeCard={activeCard} />
 						<Withdraw
 							activeCard={activeCard}
 							inactiveCardsList={inactiveCardsList}

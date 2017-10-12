@@ -26,8 +26,10 @@ class Prepaid extends Component {
 		this.setState({
 			stage: 'success',
 			transaction
-			console.log(transaction);
 		});
+		console.log(transaction);
+		console.log(this.props.insactiveCardsList);
+		this.props.refreshData();
 	}
 
 	/**

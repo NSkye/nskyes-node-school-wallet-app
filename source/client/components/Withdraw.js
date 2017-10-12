@@ -65,6 +65,9 @@ class Withdraw extends Component {
 		this.setState({
 			[name]: value
 		});
+
+		console.log("State", this.state);
+		console.log("activeCard", this.props.activeCard);
 	}
 
 	/**
@@ -105,7 +108,7 @@ class Withdraw extends Component {
 							onChange={(event) => this.onChangeInputValue(event)} />
 						<Currency>₽</Currency>
 					</InputField>
-					<Button type='submit'>Перевести</Button>
+					<Button type='activeCardsubmit'>Перевести</Button>
 				</WithdrawLayout>
 			</form>
 		);

@@ -93,6 +93,8 @@ class PrepaidContract extends Component {
 	 */
 	onCardChange(activeCardIndex) {
 		this.setState({activeCardIndex});
+		console.log(this.state);
+		console.log("Selected card", this.props.inactiveCardsList[activeCardIndex]);
 	}
 
 	/**
@@ -132,6 +134,7 @@ class PrepaidContract extends Component {
 			sum,
 			number: activeCard.number
 		});
+		console.log(this.props.inactiveCardsList);
 	}
 
 	/**
