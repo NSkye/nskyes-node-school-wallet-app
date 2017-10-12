@@ -93,8 +93,7 @@ class PrepaidContract extends Component {
 	 */
 	onCardChange(activeCardIndex) {
 		this.setState({activeCardIndex});
-		console.log(this.state);
-		console.log("Selected card", this.props.inactiveCardsList[activeCardIndex]);
+		this.props.setActiveCardIndex(activeCardIndex);
 	}
 
 	/**

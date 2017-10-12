@@ -15,7 +15,7 @@ class Prepaid extends Component {
 	constructor(props) {
 		super(props);
 
-		this.state = {stage: 'contract'};
+		this.state = {stage: 'contract', activeCardIndex: 0};
 	}
 
 	/**
@@ -23,13 +23,50 @@ class Prepaid extends Component {
 	 * @param {Object} transaction данные о транзакции
 	 */
 	onPaymentSuccess(transaction) {
+		const to = this.props.activeCard;
+		const from = this.props.inactiveCardsList[this.state.activeCardIndex];
+		const sum = transaction.sum;
+
+		if (sum>from.balance) {
+			alert("Оплата не произведена: недостаточно средств на счету!");
+			throw new Error("Недостаточно средств на счету!");
+		} else {
+			fetch(`http://localhost:3000/cards/${from.id}/transfer`, {
+				method: 'POST',
+		 		headers: {
+			 		"Content-type": "application/json"
+		 		},
+		 		body: JSON.stringify({
+			    amount: sum,
+					to: to.id,
+					dataFrom: from.number,
+					dataTo: to.number
+			  })
+			})
+		  .then((response) => {
+		    return response.json();
+		  })
+			.then((json) => {
+					console.log(json);
+					this.setState({
+						stage: 'success',
+						transaction
+					});
+				this.props.refreshData();
+		  }).catch((ex) => {
+		    console.log('Error', ex);
+				alert("Ошибка. Платеж не был произведен.")
+		  })
+		}/*
+		console.log("Selected card 1 (to)", this.props.activeCard);
+		console.log("Selected card 2 (from)", this.props.inactiveCardsList[this.state.activeCardIndex]);
+		console.log(transaction);*/
+	}
+
+	setActiveCardIndex(index) {
 		this.setState({
-			stage: 'success',
-			transaction
+			activeCardIndex: index
 		});
-		console.log(transaction);
-		console.log(this.props.insactiveCardsList);
-		this.props.refreshData();
 	}
 
 	/**
@@ -55,6 +92,7 @@ class Prepaid extends Component {
 
 		return (
 			<PrepaidContract
+				setActiveCardIndex = {this.setActiveCardIndex.bind(this)}
 				activeCard={activeCard}
 				inactiveCardsList={inactiveCardsList}
 				onPaymentSuccess={(transaction) => this.onPaymentSuccess(transaction)} />

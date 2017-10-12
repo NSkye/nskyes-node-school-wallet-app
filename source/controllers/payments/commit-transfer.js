@@ -14,13 +14,13 @@ module.exports = async (ctx) => {
    await new cardsModel().changeAmount(to, amount);
    const transactionFrom = await new transactionsModel(cards)
     .addTransaction({
-      data: '00000000000',
+      data: payment.dataTo,
       type: 'card2Card',
       sum: amount * -1
     }, cardID);
   const transactionTo = await new transactionsModel(cards)
     .addTransaction({
-      data: '00000000000',
+      data: payment.dataFrom,
       type: 'card2Card',
       sum: amount
     }, to);
