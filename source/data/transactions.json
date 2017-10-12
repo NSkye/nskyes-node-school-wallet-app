@@ -246,5 +246,21 @@
         "id": 31,
         "cardId": 20,
         "time": "Thu Oct 12 2017 15:00:49 GMT+0300 (MSK)"
+    },
+    {
+        "data": "+79218908064",
+        "type": "paymentMobile",
+        "sum": -50,
+        "id": 32,
+        "cardId": 20,
+        "time": "Thu Oct 12 2017 15:01:59 GMT+0300 (MSK)"
+    },
+    {
+        "data": "+79218908064",
+        "type": "paymentMobile",
+        "sum": -20,
+        "id": 33,
+        "cardId": 20,
+        "time": "Thu Oct 12 2017 15:02:20 GMT+0300 (MSK)"
     }
 ]

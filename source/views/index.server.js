@@ -3671,6 +3671,8 @@ var MobilePayment = function (_Component) {
 	_createClass(MobilePayment, [{
 		key: 'onPaymentSuccess',
 		value: function onPaymentSuccess(transaction) {
+			var _this2 = this;
+
 			var sum = transaction.sum;
 			var success = null;
 			var cardID = this.props.activeCard.id;
@@ -3690,11 +3692,11 @@ var MobilePayment = function (_Component) {
 				transaction.transactionID = json.id;
 				transaction.sum = json.sum;
 				transaction.phoneNumber = json.data;
-				that.setState({
+				_this2.setState({
 					stage: 'success',
 					transaction: transaction
 				});
-				that.props.refreshData();
+				_this2.props.refreshData();
 			}).catch(function (ex) {
 				console.log('Error', ex);
 				alert("Ошибка. Платеж не был произведен.");
@@ -3721,7 +3723,7 @@ var MobilePayment = function (_Component) {
 	}, {
 		key: 'render',
 		value: function render() {
-			var _this2 = this;
+			var _this3 = this;
 
 			var activeCard = this.props.activeCard;
 
@@ -3731,14 +3733,14 @@ var MobilePayment = function (_Component) {
 					activeCard: activeCard,
 					transaction: this.state.transaction,
 					repeatPayment: function repeatPayment() {
-						return _this2.repeatPayment();
+						return _this3.repeatPayment();
 					} });
 			}
 
 			return _react2.default.createElement(_MobilePaymentContract2.default, {
 				activeCard: activeCard,
 				onPaymentSuccess: function onPaymentSuccess(transaction) {
-					return _this2.onPaymentSuccess(transaction);
+					return _this3.onPaymentSuccess(transaction);
 				} });
 		}
 	}]);
@@ -5152,13 +5154,13 @@ module.exports = require("card-info");
 /* 129 */
 /***/ (function(module, exports) {
 
-module.exports = [{"cardNumber":"4561261212345467","balance":3999970,"id":19},{"cardNumber":"546925000000000","balance":4000030,"id":20}]
+module.exports = [{"cardNumber":"4561261212345467","balance":3999980,"id":19},{"cardNumber":"546925000000000","balance":3999970,"id":20}]
 
 /***/ }),
 /* 130 */
 /***/ (function(module, exports) {
 
-module.exports = [{"id":1,"cardId":1,"type":"prepaidCard","data":"220003000000003","time":"2017-08-9T05:28:31+03:00","sum":"2345"},{"data":"+79218908064","type":"paymentMobile","sum":-12,"id":2,"cardId":20,"time":"Thu Oct 12 2017 10:46:07 GMT+0300 (MSK)"},{"data":"+79218908064","type":"paymentMobile","sum":-12,"id":3,"cardId":20,"time":"Thu Oct 12 2017 10:47:32 GMT+0300 (MSK)"},{"data":"+79218908064","type":"paymentMobile","sum":-12,"id":4,"cardId":20,"time":"Thu Oct 12 2017 10:57:41 GMT+0300 (MSK)"},{"data":"+79218908064","type":"paymentMobile","sum":-12,"id":5,"cardId":20,"time":"Thu Oct 12 2017 11:01:31 GMT+0300 (MSK)"},{"data":"+79218908064","type":"paymentMobile","sum":-12,"id":6,"cardId":20,"time":"Thu Oct 12 2017 11:03:18 GMT+0300 (MSK)"},{"data":"+79218908064","type":"paymentMobile","sum":-10,"id":7,"cardId":21,"time":"Thu Oct 12 2017 11:03:43 GMT+0300 (MSK)"},{"data":"+79218908064","type":"paymentMobile","sum":-15,"id":8,"cardId":19,"time":"Thu Oct 12 2017 11:05:15 GMT+0300 (MSK)"},{"data":"+79218908064","type":"paymentMobile","sum":-12,"id":9,"cardId":20,"time":"Thu Oct 12 2017 11:12:45 GMT+0300 (MSK)"},{"data":"+79218908064","type":"paymentMobile","sum":-12,"id":10,"cardId":20,"time":"Thu Oct 12 2017 11:19:17 GMT+0300 (MSK)"},{"data":"+79218908064","type":"paymentMobile","sum":-8,"id":11,"cardId":20,"time":"Thu Oct 12 2017 11:26:17 GMT+0300 (MSK)"},{"data":"+79218908064","type":"paymentMobile","sum":-9,"id":12,"cardId":20,"time":"Thu Oct 12 2017 11:28:55 GMT+0300 (MSK)"},{"data":"+79218908064","type":"paymentMobile","sum":-9,"id":13,"cardId":20,"time":"Thu Oct 12 2017 11:29:09 GMT+0300 (MSK)"},{"data":"+79218908064","type":"paymentMobile","sum":-8,"id":14,"cardId":20,"time":"Thu Oct 12 2017 11:29:19 GMT+0300 (MSK)"},{"data":"+79218908064","type":"paymentMobile","sum":-8,"id":15,"cardId":21,"time":"Thu Oct 12 2017 11:29:28 GMT+0300 (MSK)"},{"data":"+79218908064","type":"paymentMobile","sum":-6,"id":16,"cardId":19,"time":"Thu Oct 12 2017 11:29:49 GMT+0300 (MSK)"},{"data":"5469 2500 0000 000","type":"card2Card","sum":-15,"id":17,"cardId":19,"time":"Thu Oct 12 2017 14:33:38 GMT+0300 (MSK)"},{"data":"4561 2612 1234 5467","type":"card2Card","sum":15,"id":18,"cardId":20,"time":"Thu Oct 12 2017 14:33:38 GMT+0300 (MSK)"},{"data":"5469 2500 0000 000","type":"card2Card","sum":-1,"id":19,"cardId":21,"time":"Thu Oct 12 2017 14:34:04 GMT+0300 (MSK)"},{"data":"5469 2500 0000 000","type":"card2Card","sum":1,"id":20,"cardId":20,"time":"Thu Oct 12 2017 14:34:04 GMT+0300 (MSK)"},{"data":"5469 2500 0000 000","type":"card2Card","sum":-15,"id":21,"cardId":19,"time":"Thu Oct 12 2017 14:39:09 GMT+0300 (MSK)"},{"data":"4561 2612 1234 5467","type":"card2Card","sum":15,"id":22,"cardId":20,"time":"Thu Oct 12 2017 14:39:09 GMT+0300 (MSK)"},{"data":"5469 2500 0000 000","type":"card2Card","sum":-15,"id":23,"cardId":19,"time":"Thu Oct 12 2017 14:41:17 GMT+0300 (MSK)"},{"data":"4561 2612 1234 5467","type":"card2Card","sum":15,"id":24,"cardId":20,"time":"Thu Oct 12 2017 14:41:17 GMT+0300 (MSK)"},{"data":"5469 2500 0000 000","type":"card2Card","sum":-15,"id":25,"cardId":19,"time":"Thu Oct 12 2017 14:43:44 GMT+0300 (MSK)"},{"data":"4561 2612 1234 5467","type":"card2Card","sum":15,"id":26,"cardId":20,"time":"Thu Oct 12 2017 14:43:44 GMT+0300 (MSK)"}]
+module.exports = [{"id":1,"cardId":1,"type":"prepaidCard","data":"220003000000003","time":"2017-08-9T05:28:31+03:00","sum":"2345"},{"data":"+79218908064","type":"paymentMobile","sum":-12,"id":2,"cardId":20,"time":"Thu Oct 12 2017 10:46:07 GMT+0300 (MSK)"},{"data":"+79218908064","type":"paymentMobile","sum":-12,"id":3,"cardId":20,"time":"Thu Oct 12 2017 10:47:32 GMT+0300 (MSK)"},{"data":"+79218908064","type":"paymentMobile","sum":-12,"id":4,"cardId":20,"time":"Thu Oct 12 2017 10:57:41 GMT+0300 (MSK)"},{"data":"+79218908064","type":"paymentMobile","sum":-12,"id":5,"cardId":20,"time":"Thu Oct 12 2017 11:01:31 GMT+0300 (MSK)"},{"data":"+79218908064","type":"paymentMobile","sum":-12,"id":6,"cardId":20,"time":"Thu Oct 12 2017 11:03:18 GMT+0300 (MSK)"},{"data":"+79218908064","type":"paymentMobile","sum":-10,"id":7,"cardId":21,"time":"Thu Oct 12 2017 11:03:43 GMT+0300 (MSK)"},{"data":"+79218908064","type":"paymentMobile","sum":-15,"id":8,"cardId":19,"time":"Thu Oct 12 2017 11:05:15 GMT+0300 (MSK)"},{"data":"+79218908064","type":"paymentMobile","sum":-12,"id":9,"cardId":20,"time":"Thu Oct 12 2017 11:12:45 GMT+0300 (MSK)"},{"data":"+79218908064","type":"paymentMobile","sum":-12,"id":10,"cardId":20,"time":"Thu Oct 12 2017 11:19:17 GMT+0300 (MSK)"},{"data":"+79218908064","type":"paymentMobile","sum":-8,"id":11,"cardId":20,"time":"Thu Oct 12 2017 11:26:17 GMT+0300 (MSK)"},{"data":"+79218908064","type":"paymentMobile","sum":-9,"id":12,"cardId":20,"time":"Thu Oct 12 2017 11:28:55 GMT+0300 (MSK)"},{"data":"+79218908064","type":"paymentMobile","sum":-9,"id":13,"cardId":20,"time":"Thu Oct 12 2017 11:29:09 GMT+0300 (MSK)"},{"data":"+79218908064","type":"paymentMobile","sum":-8,"id":14,"cardId":20,"time":"Thu Oct 12 2017 11:29:19 GMT+0300 (MSK)"},{"data":"+79218908064","type":"paymentMobile","sum":-8,"id":15,"cardId":21,"time":"Thu Oct 12 2017 11:29:28 GMT+0300 (MSK)"},{"data":"+79218908064","type":"paymentMobile","sum":-6,"id":16,"cardId":19,"time":"Thu Oct 12 2017 11:29:49 GMT+0300 (MSK)"},{"data":"5469 2500 0000 000","type":"card2Card","sum":-15,"id":17,"cardId":19,"time":"Thu Oct 12 2017 14:33:38 GMT+0300 (MSK)"},{"data":"4561 2612 1234 5467","type":"card2Card","sum":15,"id":18,"cardId":20,"time":"Thu Oct 12 2017 14:33:38 GMT+0300 (MSK)"},{"data":"5469 2500 0000 000","type":"card2Card","sum":-1,"id":19,"cardId":21,"time":"Thu Oct 12 2017 14:34:04 GMT+0300 (MSK)"},{"data":"5469 2500 0000 000","type":"card2Card","sum":1,"id":20,"cardId":20,"time":"Thu Oct 12 2017 14:34:04 GMT+0300 (MSK)"},{"data":"5469 2500 0000 000","type":"card2Card","sum":-15,"id":21,"cardId":19,"time":"Thu Oct 12 2017 14:39:09 GMT+0300 (MSK)"},{"data":"4561 2612 1234 5467","type":"card2Card","sum":15,"id":22,"cardId":20,"time":"Thu Oct 12 2017 14:39:09 GMT+0300 (MSK)"},{"data":"5469 2500 0000 000","type":"card2Card","sum":-15,"id":23,"cardId":19,"time":"Thu Oct 12 2017 14:41:17 GMT+0300 (MSK)"},{"data":"4561 2612 1234 5467","type":"card2Card","sum":15,"id":24,"cardId":20,"time":"Thu Oct 12 2017 14:41:17 GMT+0300 (MSK)"},{"data":"5469 2500 0000 000","type":"card2Card","sum":-15,"id":25,"cardId":19,"time":"Thu Oct 12 2017 14:43:44 GMT+0300 (MSK)"},{"data":"4561 2612 1234 5467","type":"card2Card","sum":15,"id":26,"cardId":20,"time":"Thu Oct 12 2017 14:43:44 GMT+0300 (MSK)"},{"data":"5469 2500 0000 000","type":"card2Card","sum":-80,"id":27,"cardId":19,"time":"Thu Oct 12 2017 15:00:10 GMT+0300 (MSK)"},{"data":"4561 2612 1234 5467","type":"card2Card","sum":80,"id":28,"cardId":20,"time":"Thu Oct 12 2017 15:00:10 GMT+0300 (MSK)"},{"data":"4561 2612 1234 5467","type":"card2Card","sum":-90,"id":29,"cardId":20,"time":"Thu Oct 12 2017 15:00:19 GMT+0300 (MSK)"},{"data":"5469 2500 0000 000","type":"card2Card","sum":90,"id":30,"cardId":19,"time":"Thu Oct 12 2017 15:00:19 GMT+0300 (MSK)"},{"data":"+79218908064","type":"paymentMobile","sum":-50,"id":31,"cardId":20,"time":"Thu Oct 12 2017 15:00:49 GMT+0300 (MSK)"}]
 
 /***/ })
 /******/ ]);

@@ -40,7 +40,7 @@ class MobilePayment extends Component {
 	  }).then((json) => {
 	    console.log('parsed json', json);
 			transaction.transactionID = json.id;
-			transaction.sum = json.sum;
+			transaction.sum = json.sum * -1;
 			transaction.phoneNumber = json.data;
 			this.setState({
 				stage: 'success',
