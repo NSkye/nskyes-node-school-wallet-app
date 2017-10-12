@@ -26,6 +26,7 @@ class Prepaid extends Component {
 		this.setState({
 			stage: 'success',
 			transaction
+			console.log(transaction);
 		});
 	}
 

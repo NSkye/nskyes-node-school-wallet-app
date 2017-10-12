@@ -58007,7 +58007,9 @@ var MobilePayment = function (_Component) {
 			var sum = transaction.sum;
 			var that = this;
 			var success = null;
-			fetch('http://localhost:3000/cards/20/pay', {
+			var cardID = this.props.activeCard.id;
+			var url = 'http://localhost:3000/cards/' + cardID + '/pay';
+			fetch(url, {
 				method: 'POST',
 				headers: {
 					"Content-type": "application/json"
@@ -58854,7 +58856,7 @@ var _ = __webpack_require__(14);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var HistoryLayout = /*#__PURE__*/(0, _react4.default)(_.Island, 'css-HistoryLayout-9hsdku0', [], [], function createEmotionStyledRules() {
+var HistoryLayout = /*#__PURE__*/(0, _react4.default)(_.Island, 'css-HistoryLayout-10taoq80', [], [], function createEmotionStyledRules() {
 	return {
 		'width': '530px',
 		'maxHeight': '622px',
@@ -58864,7 +58866,7 @@ var HistoryLayout = /*#__PURE__*/(0, _react4.default)(_.Island, 'css-HistoryLayo
 	};
 });
 
-var HistoryTitle = /*#__PURE__*/(0, _react4.default)('div', 'css-HistoryTitle-9hsdku1', [], [], function createEmotionStyledRules() {
+var HistoryTitle = /*#__PURE__*/(0, _react4.default)('div', 'css-HistoryTitle-10taoq81', [], [], function createEmotionStyledRules() {
 	return {
 		'paddingLeft': '12px',
 		'color': 'rgba(0, 0, 0, 0.4)',
@@ -58874,7 +58876,7 @@ var HistoryTitle = /*#__PURE__*/(0, _react4.default)('div', 'css-HistoryTitle-9h
 	};
 });
 
-var HistoryItem = /*#__PURE__*/(0, _react4.default)('div', 'css-HistoryItem-9hsdku2', [], [], function createEmotionStyledRules() {
+var HistoryItem = /*#__PURE__*/(0, _react4.default)('div', 'css-HistoryItem-10taoq82', [], [], function createEmotionStyledRules() {
 	return {
 		'display': '-webkit-box; display: -ms-flexbox; display: flex',
 		'msFlexPack': 'distribute',
@@ -58894,7 +58896,7 @@ var HistoryItem = /*#__PURE__*/(0, _react4.default)('div', 'css-HistoryItem-9hsd
 	};
 });
 
-var HistoryItemIcon = /*#__PURE__*/(0, _react4.default)('div', 'css-HistoryItemIcon-9hsdku3', [], [function (_ref) {
+var HistoryItemIcon = /*#__PURE__*/(0, _react4.default)('div', 'css-HistoryItemIcon-10taoq83', [], [function (_ref) {
 	var bankSmLogoUrl = _ref.bankSmLogoUrl;
 	return bankSmLogoUrl;
 }], function createEmotionStyledRules(x0) {
@@ -58909,7 +58911,7 @@ var HistoryItemIcon = /*#__PURE__*/(0, _react4.default)('div', 'css-HistoryItemI
 	};
 });
 
-var HistoryItemTitle = /*#__PURE__*/(0, _react4.default)('div', 'css-HistoryItemTitle-9hsdku4', [], [], function createEmotionStyledRules() {
+var HistoryItemTitle = /*#__PURE__*/(0, _react4.default)('div', 'css-HistoryItemTitle-10taoq84', [], [], function createEmotionStyledRules() {
 	return {
 		'width': '290px',
 		'overflow': 'hidden',
@@ -58917,13 +58919,13 @@ var HistoryItemTitle = /*#__PURE__*/(0, _react4.default)('div', 'css-HistoryItem
 	};
 });
 
-var HistoryItemTime = /*#__PURE__*/(0, _react4.default)('div', 'css-HistoryItemTime-9hsdku5', [], [], function createEmotionStyledRules() {
+var HistoryItemTime = /*#__PURE__*/(0, _react4.default)('div', 'css-HistoryItemTime-10taoq85', [], [], function createEmotionStyledRules() {
 	return {
 		'width': '50px'
 	};
 });
 
-var HistoryItemSum = /*#__PURE__*/(0, _react4.default)('div', 'css-HistoryItemSum-9hsdku6', [], [], function createEmotionStyledRules() {
+var HistoryItemSum = /*#__PURE__*/(0, _react4.default)('div', 'css-HistoryItemSum-10taoq86', [], [], function createEmotionStyledRules() {
 	return {
 		'width': '50px',
 		'overflow': 'hidden',
@@ -64829,13 +64831,13 @@ exports.default = App;
 /* 443 */
 /***/ (function(module, exports) {
 
-module.exports = [{"cardNumber":"4561261212345467","balance":42,"id":19},{"cardNumber":"546925000000000","balance":-3092,"id":20},{"cardNumber":"546925000000000","balance":42,"id":21}]
+module.exports = [{"cardNumber":"4561261212345467","balance":41,"id":19},{"cardNumber":"546925000000000","balance":-3148,"id":20},{"cardNumber":"546925000000000","balance":19,"id":21}]
 
 /***/ }),
 /* 444 */
 /***/ (function(module, exports) {
 
-module.exports = [{"id":1,"cardId":1,"type":"prepaidCard","data":"220003000000003","time":"2017-08-9T05:28:31+03:00","sum":"2345"},{"type":"prepaidCard","data":"220003000000003","sum":"2345","id":2,"cardId":7,"time":"Sun Oct 08 2017 21:41:47 GMT+0300 (MSK)"},{"type":"prepaidCard","data":"220003000000003","sum":"2345","id":3,"cardId":7,"time":"Sun Oct 08 2017 21:44:01 GMT+0300 (MSK)"},{"type":"prepaidCard","data":"220003000000003","sum":"2345","id":4,"cardId":2,"time":"Sun Oct 08 2017 21:44:37 GMT+0300 (MSK)"},{"type":"prepaidCard","data":"220003000000003","sum":"2345","id":5,"cardId":2,"time":"Mon Oct 09 2017 07:39:46 GMT+0300 (MSK)"},{"type":"prepaidCard","data":"220003000000003","sum":"2345","id":6,"cardId":7,"time":"Mon Oct 09 2017 07:39:57 GMT+0300 (MSK)"},{"type":"prepaidCard","data":"220003000000003","sum":"2345","id":7,"cardId":7,"time":"Mon Oct 09 2017 07:39:58 GMT+0300 (MSK)"},{"type":"prepaidCard","data":"220003000000003","sum":"2345","id":8,"cardId":7,"time":"Mon Oct 09 2017 07:39:59 GMT+0300 (MSK)"},{"type":"prepaidCard","data":"220003000000003","sum":"2345","id":9,"cardId":7,"time":"Mon Oct 09 2017 14:11:25 GMT+0300 (MSK)"},{"type":"prepaidCard","data":"220003000000003","sum":"2345","id":10,"cardId":7,"time":"Mon Oct 09 2017 14:11:40 GMT+0300 (MSK)"},{"type":"prepaidCard","data":"220003000000003","sum":"2345","id":11,"cardId":7,"time":"Mon Oct 09 2017 14:19:23 GMT+0300 (MSK)"},{"data":79000000000,"type":"paymentMobile","sum":"42","id":12,"cardId":2,"time":"Mon Oct 09 2017 20:00:15 GMT+0300 (MSK)"},{"data":79000000000,"type":"paymentMobile","sum":"42","id":13,"cardId":2,"time":"Mon Oct 09 2017 20:03:19 GMT+0300 (MSK)"},{"data":79000000000,"type":"paymentMobile","sum":-42,"id":14,"cardId":2,"time":"Mon Oct 09 2017 20:05:40 GMT+0300 (MSK)"},{"data":"+79000000000","type":"paymentMobile","sum":-42,"id":15,"cardId":9,"time":"Wed Oct 11 2017 09:49:32 GMT+0300 (MSK)"},{"data":"+79000000000","type":"paymentMobile","sum":-42,"id":16,"cardId":9,"time":"Wed Oct 11 2017 09:51:53 GMT+0300 (MSK)"},{"data":"00000000000","type":"paymentMobile","sum":42,"id":17,"cardId":9,"time":"Wed Oct 11 2017 09:54:14 GMT+0300 (MSK)"},{"data":"00000000000","type":"card2Card","sum":-42,"id":18,"cardId":9,"time":"Wed Oct 11 2017 10:05:24 GMT+0300 (MSK)"},{"data":"00000000000","type":"card2Card","sum":42,"id":19,"cardId":8,"time":"Wed Oct 11 2017 10:05:24 GMT+0300 (MSK)"},{"data":"+79218908064","type":"paymentMobile","sum":-42,"id":20,"cardId":20,"time":"Wed Oct 11 2017 19:11:53 GMT+0300 (MSK)"},{"data":"+79218908064","type":"paymentMobile","sum":null,"id":21,"cardId":20,"time":"Wed Oct 11 2017 19:17:15 GMT+0300 (MSK)"},{"data":"+79218908064","type":"paymentMobile","sum":null,"id":22,"cardId":20,"time":"Wed Oct 11 2017 19:18:47 GMT+0300 (MSK)"},{"data":"+79218908064","type":"paymentMobile","sum":null,"id":23,"cardId":20,"time":"Wed Oct 11 2017 19:20:30 GMT+0300 (MSK)"},{"data":"+79218908064","type":"paymentMobile","sum":null,"id":24,"cardId":20,"time":"Wed Oct 11 2017 19:24:15 GMT+0300 (MSK)"},{"data":"+79218908064","type":"paymentMobile","sum":null,"id":25,"cardId":20,"time":"Wed Oct 11 2017 19:26:08 GMT+0300 (MSK)"},{"data":"+79218908064","type":"paymentMobile","sum":null,"id":26,"cardId":20,"time":"Wed Oct 11 2017 19:27:06 GMT+0300 (MSK)"},{"data":"+79218908064","type":"paymentMobile","sum":null,"id":27,"cardId":20,"time":"Wed Oct 11 2017 19:27:23 GMT+0300 (MSK)"},{"data":"+79218908064","type":"paymentMobile","sum":null,"id":28,"cardId":20,"time":"Wed Oct 11 2017 19:28:33 GMT+0300 (MSK)"},{"data":"+79218908064","type":"paymentMobile","sum":null,"id":29,"cardId":20,"time":"Wed Oct 11 2017 19:30:37 GMT+0300 (MSK)"},{"data":"+79218908064","type":"paymentMobile","sum":null,"id":30,"cardId":20,"time":"Wed Oct 11 2017 19:42:44 GMT+0300 (MSK)"},{"data":"+79218908064","type":"paymentMobile","sum":null,"id":31,"cardId":20,"time":"Wed Oct 11 2017 19:54:45 GMT+0300 (MSK)"},{"data":"+79218908064","type":"paymentMobile","sum":null,"id":32,"cardId":20,"time":"Wed Oct 11 2017 19:56:54 GMT+0300 (MSK)"},{"data":"+79218908064","type":"paymentMobile","sum":null,"id":33,"cardId":20,"time":"Wed Oct 11 2017 19:58:44 GMT+0300 (MSK)"},{"data":"+79218908064","type":"paymentMobile","sum":null,"id":34,"cardId":20,"time":"Wed Oct 11 2017 20:01:18 GMT+0300 (MSK)"},{"data":"+79218908064","type":"paymentMobile","sum":null,"id":35,"cardId":20,"time":"Wed Oct 11 2017 20:01:28 GMT+0300 (MSK)"},{"data":"+79218908064","type":"paymentMobile","sum":-42,"id":36,"cardId":20,"time":"Wed Oct 11 2017 20:01:34 GMT+0300 (MSK)"},{"data":"+79218908064","type":"paymentMobile","sum":-42,"id":37,"cardId":20,"time":"Wed Oct 11 2017 20:01:36 GMT+0300 (MSK)"},{"data":"+79218908064","type":"paymentMobile","sum":-42,"id":38,"cardId":20,"time":"Wed Oct 11 2017 20:01:38 GMT+0300 (MSK)"},{"data":"+79218908064","type":"paymentMobile","sum":null,"id":39,"cardId":20,"time":"Wed Oct 11 2017 20:01:58 GMT+0300 (MSK)"},{"data":"+79218908064","type":"paymentMobile","sum":-42,"id":40,"cardId":20,"time":"Wed Oct 11 2017 20:04:14 GMT+0300 (MSK)"},{"data":"+79218908064","type":"paymentMobile","sum":-500,"id":41,"cardId":20,"time":"Wed Oct 11 2017 20:18:50 GMT+0300 (MSK)"},{"data":"+79218908064","type":"paymentMobile","sum":-500,"id":42,"cardId":20,"time":"Wed Oct 11 2017 20:19:08 GMT+0300 (MSK)"},{"data":"+79218908064","type":"paymentMobile","sum":-500,"id":43,"cardId":20,"time":"Wed Oct 11 2017 20:19:33 GMT+0300 (MSK)"},{"data":"+79218908064","type":"paymentMobile","sum":-12,"id":44,"cardId":20,"time":"Wed Oct 11 2017 20:23:54 GMT+0300 (MSK)"},{"data":"+79218908064","type":"paymentMobile","sum":-500,"id":45,"cardId":20,"time":"Wed Oct 11 2017 20:24:32 GMT+0300 (MSK)"},{"data":"+79218908064","type":"paymentMobile","sum":-500,"id":46,"cardId":20,"time":"Wed Oct 11 2017 20:25:34 GMT+0300 (MSK)"},{"data":"+79218908064","type":"paymentMobile","sum":-500,"id":47,"cardId":20,"time":"Wed Oct 11 2017 20:27:12 GMT+0300 (MSK)"},{"data":"+79218908064","type":"paymentMobile","sum":-1,"id":48,"cardId":20,"time":"Wed Oct 11 2017 20:27:47 GMT+0300 (MSK)"},{"data":"+79218908064","type":"paymentMobile","sum":-24,"id":49,"cardId":20,"time":"Wed Oct 11 2017 20:32:44 GMT+0300 (MSK)"},{"data":"+79218908064","type":"paymentMobile","sum":-13,"id":50,"cardId":20,"time":"Wed Oct 11 2017 20:34:42 GMT+0300 (MSK)"}]
+module.exports = [{"id":1,"cardId":1,"type":"prepaidCard","data":"220003000000003","time":"2017-08-9T05:28:31+03:00","sum":"2345"},{"type":"prepaidCard","data":"220003000000003","sum":"2345","id":2,"cardId":7,"time":"Sun Oct 08 2017 21:41:47 GMT+0300 (MSK)"},{"type":"prepaidCard","data":"220003000000003","sum":"2345","id":3,"cardId":7,"time":"Sun Oct 08 2017 21:44:01 GMT+0300 (MSK)"},{"type":"prepaidCard","data":"220003000000003","sum":"2345","id":4,"cardId":2,"time":"Sun Oct 08 2017 21:44:37 GMT+0300 (MSK)"},{"type":"prepaidCard","data":"220003000000003","sum":"2345","id":5,"cardId":2,"time":"Mon Oct 09 2017 07:39:46 GMT+0300 (MSK)"},{"type":"prepaidCard","data":"220003000000003","sum":"2345","id":6,"cardId":7,"time":"Mon Oct 09 2017 07:39:57 GMT+0300 (MSK)"},{"type":"prepaidCard","data":"220003000000003","sum":"2345","id":7,"cardId":7,"time":"Mon Oct 09 2017 07:39:58 GMT+0300 (MSK)"},{"type":"prepaidCard","data":"220003000000003","sum":"2345","id":8,"cardId":7,"time":"Mon Oct 09 2017 07:39:59 GMT+0300 (MSK)"},{"type":"prepaidCard","data":"220003000000003","sum":"2345","id":9,"cardId":7,"time":"Mon Oct 09 2017 14:11:25 GMT+0300 (MSK)"},{"type":"prepaidCard","data":"220003000000003","sum":"2345","id":10,"cardId":7,"time":"Mon Oct 09 2017 14:11:40 GMT+0300 (MSK)"},{"type":"prepaidCard","data":"220003000000003","sum":"2345","id":11,"cardId":7,"time":"Mon Oct 09 2017 14:19:23 GMT+0300 (MSK)"},{"data":79000000000,"type":"paymentMobile","sum":"42","id":12,"cardId":2,"time":"Mon Oct 09 2017 20:00:15 GMT+0300 (MSK)"},{"data":79000000000,"type":"paymentMobile","sum":"42","id":13,"cardId":2,"time":"Mon Oct 09 2017 20:03:19 GMT+0300 (MSK)"},{"data":79000000000,"type":"paymentMobile","sum":-42,"id":14,"cardId":2,"time":"Mon Oct 09 2017 20:05:40 GMT+0300 (MSK)"},{"data":"+79000000000","type":"paymentMobile","sum":-42,"id":15,"cardId":9,"time":"Wed Oct 11 2017 09:49:32 GMT+0300 (MSK)"},{"data":"+79000000000","type":"paymentMobile","sum":-42,"id":16,"cardId":9,"time":"Wed Oct 11 2017 09:51:53 GMT+0300 (MSK)"},{"data":"00000000000","type":"paymentMobile","sum":42,"id":17,"cardId":9,"time":"Wed Oct 11 2017 09:54:14 GMT+0300 (MSK)"},{"data":"00000000000","type":"card2Card","sum":-42,"id":18,"cardId":9,"time":"Wed Oct 11 2017 10:05:24 GMT+0300 (MSK)"},{"data":"00000000000","type":"card2Card","sum":42,"id":19,"cardId":8,"time":"Wed Oct 11 2017 10:05:24 GMT+0300 (MSK)"},{"data":"+79218908064","type":"paymentMobile","sum":-42,"id":20,"cardId":20,"time":"Wed Oct 11 2017 19:11:53 GMT+0300 (MSK)"},{"data":"+79218908064","type":"paymentMobile","sum":null,"id":21,"cardId":20,"time":"Wed Oct 11 2017 19:17:15 GMT+0300 (MSK)"},{"data":"+79218908064","type":"paymentMobile","sum":null,"id":22,"cardId":20,"time":"Wed Oct 11 2017 19:18:47 GMT+0300 (MSK)"},{"data":"+79218908064","type":"paymentMobile","sum":null,"id":23,"cardId":20,"time":"Wed Oct 11 2017 19:20:30 GMT+0300 (MSK)"},{"data":"+79218908064","type":"paymentMobile","sum":null,"id":24,"cardId":20,"time":"Wed Oct 11 2017 19:24:15 GMT+0300 (MSK)"},{"data":"+79218908064","type":"paymentMobile","sum":null,"id":25,"cardId":20,"time":"Wed Oct 11 2017 19:26:08 GMT+0300 (MSK)"},{"data":"+79218908064","type":"paymentMobile","sum":null,"id":26,"cardId":20,"time":"Wed Oct 11 2017 19:27:06 GMT+0300 (MSK)"},{"data":"+79218908064","type":"paymentMobile","sum":null,"id":27,"cardId":20,"time":"Wed Oct 11 2017 19:27:23 GMT+0300 (MSK)"},{"data":"+79218908064","type":"paymentMobile","sum":null,"id":28,"cardId":20,"time":"Wed Oct 11 2017 19:28:33 GMT+0300 (MSK)"},{"data":"+79218908064","type":"paymentMobile","sum":null,"id":29,"cardId":20,"time":"Wed Oct 11 2017 19:30:37 GMT+0300 (MSK)"},{"data":"+79218908064","type":"paymentMobile","sum":null,"id":30,"cardId":20,"time":"Wed Oct 11 2017 19:42:44 GMT+0300 (MSK)"},{"data":"+79218908064","type":"paymentMobile","sum":null,"id":31,"cardId":20,"time":"Wed Oct 11 2017 19:54:45 GMT+0300 (MSK)"},{"data":"+79218908064","type":"paymentMobile","sum":null,"id":32,"cardId":20,"time":"Wed Oct 11 2017 19:56:54 GMT+0300 (MSK)"},{"data":"+79218908064","type":"paymentMobile","sum":null,"id":33,"cardId":20,"time":"Wed Oct 11 2017 19:58:44 GMT+0300 (MSK)"},{"data":"+79218908064","type":"paymentMobile","sum":null,"id":34,"cardId":20,"time":"Wed Oct 11 2017 20:01:18 GMT+0300 (MSK)"},{"data":"+79218908064","type":"paymentMobile","sum":null,"id":35,"cardId":20,"time":"Wed Oct 11 2017 20:01:28 GMT+0300 (MSK)"},{"data":"+79218908064","type":"paymentMobile","sum":-42,"id":36,"cardId":20,"time":"Wed Oct 11 2017 20:01:34 GMT+0300 (MSK)"},{"data":"+79218908064","type":"paymentMobile","sum":-42,"id":37,"cardId":20,"time":"Wed Oct 11 2017 20:01:36 GMT+0300 (MSK)"},{"data":"+79218908064","type":"paymentMobile","sum":-42,"id":38,"cardId":20,"time":"Wed Oct 11 2017 20:01:38 GMT+0300 (MSK)"},{"data":"+79218908064","type":"paymentMobile","sum":null,"id":39,"cardId":20,"time":"Wed Oct 11 2017 20:01:58 GMT+0300 (MSK)"},{"data":"+79218908064","type":"paymentMobile","sum":-42,"id":40,"cardId":20,"time":"Wed Oct 11 2017 20:04:14 GMT+0300 (MSK)"},{"data":"+79218908064","type":"paymentMobile","sum":-500,"id":41,"cardId":20,"time":"Wed Oct 11 2017 20:18:50 GMT+0300 (MSK)"},{"data":"+79218908064","type":"paymentMobile","sum":-500,"id":42,"cardId":20,"time":"Wed Oct 11 2017 20:19:08 GMT+0300 (MSK)"},{"data":"+79218908064","type":"paymentMobile","sum":-500,"id":43,"cardId":20,"time":"Wed Oct 11 2017 20:19:33 GMT+0300 (MSK)"},{"data":"+79218908064","type":"paymentMobile","sum":-12,"id":44,"cardId":20,"time":"Wed Oct 11 2017 20:23:54 GMT+0300 (MSK)"},{"data":"+79218908064","type":"paymentMobile","sum":-500,"id":45,"cardId":20,"time":"Wed Oct 11 2017 20:24:32 GMT+0300 (MSK)"},{"data":"+79218908064","type":"paymentMobile","sum":-500,"id":46,"cardId":20,"time":"Wed Oct 11 2017 20:25:34 GMT+0300 (MSK)"},{"data":"+79218908064","type":"paymentMobile","sum":-500,"id":47,"cardId":20,"time":"Wed Oct 11 2017 20:27:12 GMT+0300 (MSK)"},{"data":"+79218908064","type":"paymentMobile","sum":-1,"id":48,"cardId":20,"time":"Wed Oct 11 2017 20:27:47 GMT+0300 (MSK)"},{"data":"+79218908064","type":"paymentMobile","sum":-24,"id":49,"cardId":20,"time":"Wed Oct 11 2017 20:32:44 GMT+0300 (MSK)"},{"data":"+79218908064","type":"paymentMobile","sum":-13,"id":50,"cardId":20,"time":"Wed Oct 11 2017 20:34:42 GMT+0300 (MSK)"},{"data":"+79218908064","type":"paymentMobile","sum":-12,"id":51,"cardId":20,"time":"Wed Oct 11 2017 20:38:51 GMT+0300 (MSK)"},{"data":"+79218908064","type":"paymentMobile","sum":-31,"id":52,"cardId":20,"time":"Wed Oct 11 2017 21:00:41 GMT+0300 (MSK)"},{"data":"+79218908064","type":"paymentMobile","sum":-1,"id":53,"cardId":19,"time":"Wed Oct 11 2017 21:03:48 GMT+0300 (MSK)"},{"data":"+79218908064","type":"paymentMobile","sum":-13,"id":54,"cardId":20,"time":"Wed Oct 11 2017 21:04:14 GMT+0300 (MSK)"},{"data":"+79218908064","type":"paymentMobile","sum":-23,"id":55,"cardId":21,"time":"Wed Oct 11 2017 21:04:19 GMT+0300 (MSK)"}]
 
 /***/ })
 /******/ ]);

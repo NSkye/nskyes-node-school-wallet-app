@@ -97,6 +97,7 @@ const History = ({cardHistory}) => {
 				const today = moment().format('L');
 				const isTodayHistoryItem = historyItemDate.format('L') === today;
 
+				
 				if (!isTodayHistoryItem) {
 					return '';
 				}

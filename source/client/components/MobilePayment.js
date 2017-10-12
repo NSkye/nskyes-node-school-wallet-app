@@ -25,7 +25,9 @@ class MobilePayment extends Component {
 		const sum = transaction.sum;
 		const that = this;
 		const success = null;
-		fetch('http://localhost:3000/cards/20/pay', {
+		const cardID = this.props.activeCard.id;
+		const url = `http://localhost:3000/cards/${cardID}/pay`;
+		fetch(url, {
 			method: 'POST',
 	 		headers: {
 		 		"Content-type": "application/json"
