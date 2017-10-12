@@ -22,35 +22,42 @@ class MobilePayment extends Component {
 	 * @param {Object} transaction данные о транзакции
 	 */
 	onPaymentSuccess(transaction) {
-		const sum = transaction.sum;
+		const sum = Number(transaction.sum) + Number(transaction.commission);
 		const success = null;
 		const cardID = this.props.activeCard.id;
+		const balance = this.props.activeCard.balance;
 		const url = `http://localhost:3000/cards/${cardID}/pay`;
-		fetch(url, {
-			method: 'POST',
-	 		headers: {
-		 		"Content-type": "application/json"
-	 		},
-	 		body: JSON.stringify({
-		    amount: sum,
-		  })
-		})
-	  .then((response) => {
-	    return response.json();
-	  }).then((json) => {
-	    console.log('parsed json', json);
-			transaction.transactionID = json.id;
-			transaction.sum = json.sum * -1;
-			transaction.phoneNumber = json.data;
-			this.setState({
-				stage: 'success',
-				transaction
-			});
-			this.props.refreshData();
-	  }).catch((ex) => {
-	    console.log('Error', ex);
-			alert("Ошибка. Платеж не был произведен.")
-	  })
+		if (sum>balance) {
+			alert("Оплата не произведена: недостаточно средств на счету!");
+			throw new Error("Недостаточно средств на счету!");
+		} else {
+			fetch(url, {
+				method: 'POST',
+		 		headers: {
+			 		"Content-type": "application/json"
+		 		},
+		 		body: JSON.stringify({
+			    amount: sum,
+			  })
+			})
+		  .then((response) => {
+		    return response.json();
+		  }).then((json) => {
+		    console.log('parsed json', json);
+				transaction.transactionID = json.id;
+				transaction.sum = json.sum * -1;
+				transaction.phoneNumber = json.data;
+				this.setState({
+					stage: 'success',
+					transaction
+				});
+				this.props.refreshData();
+				console.log(transaction);
+		  }).catch((ex) => {
+		    console.log('Error', ex);
+				alert("Ошибка. Платеж не был произведен.")
+		  });
+		}
 	}
 
 	/**

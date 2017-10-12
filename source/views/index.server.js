@@ -3673,34 +3673,41 @@ var MobilePayment = function (_Component) {
 		value: function onPaymentSuccess(transaction) {
 			var _this2 = this;
 
-			var sum = transaction.sum;
+			var sum = Number(transaction.sum) + Number(transaction.commission);
 			var success = null;
 			var cardID = this.props.activeCard.id;
+			var balance = this.props.activeCard.balance;
 			var url = 'http://localhost:3000/cards/' + cardID + '/pay';
-			fetch(url, {
-				method: 'POST',
-				headers: {
-					"Content-type": "application/json"
-				},
-				body: JSON.stringify({
-					amount: sum
-				})
-			}).then(function (response) {
-				return response.json();
-			}).then(function (json) {
-				console.log('parsed json', json);
-				transaction.transactionID = json.id;
-				transaction.sum = json.sum * -1;
-				transaction.phoneNumber = json.data;
-				_this2.setState({
-					stage: 'success',
-					transaction: transaction
+			if (sum > balance) {
+				alert("Оплата не произведена: недостаточно средств на счету!");
+				throw new Error("Недостаточно средств на счету!");
+			} else {
+				fetch(url, {
+					method: 'POST',
+					headers: {
+						"Content-type": "application/json"
+					},
+					body: JSON.stringify({
+						amount: sum
+					})
+				}).then(function (response) {
+					return response.json();
+				}).then(function (json) {
+					console.log('parsed json', json);
+					transaction.transactionID = json.id;
+					transaction.sum = json.sum * -1;
+					transaction.phoneNumber = json.data;
+					_this2.setState({
+						stage: 'success',
+						transaction: transaction
+					});
+					_this2.props.refreshData();
+					console.log(transaction);
+				}).catch(function (ex) {
+					console.log('Error', ex);
+					alert("Ошибка. Платеж не был произведен.");
 				});
-				_this2.props.refreshData();
-			}).catch(function (ex) {
-				console.log('Error', ex);
-				alert("Ошибка. Платеж не был произведен.");
-			});
+			}
 		}
 
 		/**
@@ -4317,13 +4324,13 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var WithdrawTitle = /*#__PURE__*/(0, _react4.default)(_.Title, 'css-WithdrawTitle-1frdbsx0', [], [], function createEmotionStyledRules() {
+var WithdrawTitle = /*#__PURE__*/(0, _react4.default)(_.Title, 'css-WithdrawTitle-1ttquec0', [], [], function createEmotionStyledRules() {
 	return {
 		'textAlign': 'center'
 	};
 });
 
-var WithdrawLayout = /*#__PURE__*/(0, _react4.default)(_.Island, 'css-WithdrawLayout-1frdbsx1', [], [], function createEmotionStyledRules() {
+var WithdrawLayout = /*#__PURE__*/(0, _react4.default)(_.Island, 'css-WithdrawLayout-1ttquec1', [], [], function createEmotionStyledRules() {
 	return {
 		'width': '440px',
 		'display': '-webkit-box; display: -ms-flexbox; display: flex',
@@ -4337,14 +4344,14 @@ var WithdrawLayout = /*#__PURE__*/(0, _react4.default)(_.Island, 'css-WithdrawLa
 	};
 });
 
-var InputField = /*#__PURE__*/(0, _react4.default)('div', 'css-InputField-1frdbsx2', [], [], function createEmotionStyledRules() {
+var InputField = /*#__PURE__*/(0, _react4.default)('div', 'css-InputField-1ttquec2', [], [], function createEmotionStyledRules() {
 	return {
 		'margin': '20px 0',
 		'position': 'relative'
 	};
 });
 
-var SumInput = /*#__PURE__*/(0, _react4.default)(_.Input, 'css-SumInput-1frdbsx3', [], [], function createEmotionStyledRules() {
+var SumInput = /*#__PURE__*/(0, _react4.default)(_.Input, 'css-SumInput-1ttquec3', [], [], function createEmotionStyledRules() {
 	return {
 		'maxWidth': '200px',
 		'paddingRight': '20px',
@@ -4353,7 +4360,7 @@ var SumInput = /*#__PURE__*/(0, _react4.default)(_.Input, 'css-SumInput-1frdbsx3
 	};
 });
 
-var Currency = /*#__PURE__*/(0, _react4.default)('span', 'css-Currency-1frdbsx4', [], [], function createEmotionStyledRules() {
+var Currency = /*#__PURE__*/(0, _react4.default)('span', 'css-Currency-1ttquec4', [], [], function createEmotionStyledRules() {
 	return {
 		'fontSize': '12px',
 		'position': 'absolute',
@@ -4417,9 +4424,13 @@ var Withdraw = function (_Component) {
 	}, {
 		key: 'onSubmitForm',
 		value: function onSubmitForm(event) {
+			var _this2 = this;
+
 			if (event) {
 				event.preventDefault();
 			}
+			var to = this.state.selectedCard;
+			var from = this.props.activeCard;
 
 			var sum = this.state.sum;
 
@@ -4429,7 +4440,32 @@ var Withdraw = function (_Component) {
 				return;
 			}
 
-			this.setState({ sum: 0 });
+			if (sum > from.balance) {
+				alert("Оплата не произведена: недостаточно средств на счету!");
+				throw new Error("Недостаточно средств на счету!");
+			} else {
+				fetch('http://localhost:3000/cards/' + from.id + '/transfer', {
+					method: 'POST',
+					headers: {
+						"Content-type": "application/json"
+					},
+					body: JSON.stringify({
+						amount: sum,
+						to: to.id,
+						dataFrom: from.number,
+						dataTo: to.number
+					})
+				}).then(function (response) {
+					return response.json();
+				}).then(function (json) {
+					console.log(json);
+					_this2.setState({ sum: 0 });
+					_this2.props.refreshData();
+				}).catch(function (ex) {
+					console.log('Error', ex);
+					alert("Ошибка. Платеж не был произведен.");
+				});
+			}
 		}
 
 		/**
@@ -4440,7 +4476,7 @@ var Withdraw = function (_Component) {
 	}, {
 		key: 'render',
 		value: function render() {
-			var _this2 = this;
+			var _this3 = this;
 
 			var inactiveCardsList = this.props.inactiveCardsList;
 
@@ -4448,7 +4484,7 @@ var Withdraw = function (_Component) {
 			return _react2.default.createElement(
 				'form',
 				{ onSubmit: function onSubmit(event) {
-						return _this2.onSubmitForm(event);
+						return _this3.onSubmitForm(event);
 					} },
 				_react2.default.createElement(
 					WithdrawLayout,
@@ -4466,7 +4502,7 @@ var Withdraw = function (_Component) {
 							name: 'sum',
 							value: this.state.sum,
 							onChange: function onChange(event) {
-								return _this2.onChangeInputValue(event);
+								return _this3.onChangeInputValue(event);
 							} }),
 						_react2.default.createElement(
 							Currency,
@@ -4921,7 +4957,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 	}];
 });
 
-var Wallet = /*#__PURE__*/(0, _react4.default)('div', 'css-Wallet-sd988d0', [], [], function createEmotionStyledRules() {
+var Wallet = /*#__PURE__*/(0, _react4.default)('div', 'css-Wallet-e973fv0', [], [], function createEmotionStyledRules() {
 	return {
 		'display': '-webkit-box; display: -ms-flexbox; display: flex',
 		'minHeight': '100%',
@@ -4929,7 +4965,7 @@ var Wallet = /*#__PURE__*/(0, _react4.default)('div', 'css-Wallet-sd988d0', [], 
 	};
 });
 
-var CardPane = /*#__PURE__*/(0, _react4.default)('div', 'css-CardPane-sd988d1', [], [], function createEmotionStyledRules() {
+var CardPane = /*#__PURE__*/(0, _react4.default)('div', 'css-CardPane-e973fv1', [], [], function createEmotionStyledRules() {
 	return {
 		'WebkitBoxFlex': '1',
 		'msFlexPositive': '1',
@@ -4937,7 +4973,7 @@ var CardPane = /*#__PURE__*/(0, _react4.default)('div', 'css-CardPane-sd988d1', 
 	};
 });
 
-var Workspace = /*#__PURE__*/(0, _react4.default)('div', 'css-Workspace-sd988d2', [], [], function createEmotionStyledRules() {
+var Workspace = /*#__PURE__*/(0, _react4.default)('div', 'css-Workspace-e973fv2', [], [], function createEmotionStyledRules() {
 	return {
 		'display': '-webkit-box; display: -ms-flexbox; display: flex',
 		'msFlexWrap': 'wrap',
@@ -5108,6 +5144,7 @@ var App = function (_Component) {
 						}),
 						_react2.default.createElement(_.MobilePayment, { refreshData: this.refreshData.bind(this), activeCard: activeCard }),
 						_react2.default.createElement(_.Withdraw, {
+							refreshData: this.refreshData.bind(this),
 							activeCard: activeCard,
 							inactiveCardsList: inactiveCardsList
 						})
@@ -5154,13 +5191,13 @@ module.exports = require("card-info");
 /* 129 */
 /***/ (function(module, exports) {
 
-module.exports = [{"cardNumber":"4561261212345467","balance":3999935,"id":19},{"cardNumber":"546925000000000","balance":3999945,"id":20}]
+module.exports = [{"cardNumber":"4561261212345467","balance":3999667,"id":19},{"cardNumber":"546925000000000","balance":3999946,"id":20}]
 
 /***/ }),
 /* 130 */
 /***/ (function(module, exports) {
 
-module.exports = [{"data":"5469 2500 0000 000","type":"card2Card","sum":-15,"id":1,"cardId":19,"time":"\"2017-10-12T12:18:46.711Z\""},{"data":"4561 2612 1234 5467","type":"card2Card","sum":15,"id":2,"cardId":20,"time":"\"2017-10-12T12:18:46.712Z\""},{"data":"5469 2500 0000 000","type":"card2Card","sum":-15,"id":3,"cardId":19,"time":"117-10-12T15:43:8+03:00"},{"data":"4561 2612 1234 5467","type":"card2Card","sum":15,"id":4,"cardId":20,"time":"117-10-12T15:43:8+03:00"}]
+module.exports = [{"data":"5469 2500 0000 000","type":"card2Card","sum":-15,"id":1,"cardId":19,"time":"\"2017-10-12T12:18:46.711Z\""},{"data":"4561 2612 1234 5467","type":"card2Card","sum":15,"id":2,"cardId":20,"time":"\"2017-10-12T12:18:46.712Z\""},{"data":"5469 2500 0000 000","type":"card2Card","sum":-15,"id":3,"cardId":19,"time":"117-10-12T15:43:8+03:00"},{"data":"4561 2612 1234 5467","type":"card2Card","sum":15,"id":4,"cardId":20,"time":"117-10-12T15:43:8+03:00"},{"data":"5469 2500 0000 000","type":"card2Card","sum":-15,"id":5,"cardId":19,"time":"2017-10-12T15:48:59+03:00"},{"data":"4561 2612 1234 5467","type":"card2Card","sum":15,"id":6,"cardId":20,"time":"2017-10-12T15:48:59+03:00"},{"data":"+79218908064","type":"paymentMobile","sum":-120,"id":7,"cardId":20,"time":"2017-10-12T15:49:15+03:00"},{"data":"+79218908064","type":"paymentMobile","sum":-1,"id":8,"cardId":20,"time":"2017-10-12T15:51:27+03:00"},{"data":"+79218908064","type":"paymentMobile","sum":-15,"id":9,"cardId":20,"time":"2017-10-12T15:55:59+03:00"},{"data":"+79218908064","type":"paymentMobile","sum":-15,"id":10,"cardId":20,"time":"2017-10-12T15:58:40+03:00"},{"data":"+79218908064","type":"paymentMobile","sum":-103,"id":11,"cardId":19,"time":"2017-10-12T16:00:05+03:00"},{"data":"+79218908064","type":"paymentMobile","sum":-13,"id":12,"cardId":20,"time":"2017-10-12T16:01:03+03:00"},{"data":"5469 2500 0000 000","type":"card2Card","sum":-150,"id":13,"cardId":19,"time":"2017-10-12T16:08:36+03:00"},{"data":"4561 2612 1234 5467","type":"card2Card","sum":150,"id":14,"cardId":20,"time":"2017-10-12T16:08:36+03:00"}]
 
 /***/ })
 /******/ ]);

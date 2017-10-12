@@ -78,6 +78,8 @@ class Withdraw extends Component {
 		if (event) {
 			event.preventDefault();
 		}
+		const to = this.state.selectedCard;
+		const from = this.props.activeCard;
 
 		const {sum} = this.state;
 
@@ -86,7 +88,36 @@ class Withdraw extends Component {
 			return;
 		}
 
-		this.setState({sum: 0});
+		if (sum>from.balance) {
+			alert("Оплата не произведена: недостаточно средств на счету!");
+			throw new Error("Недостаточно средств на счету!");
+		} else {
+			fetch(`http://localhost:3000/cards/${from.id}/transfer`, {
+				method: 'POST',
+		 		headers: {
+			 		"Content-type": "application/json"
+		 		},
+		 		body: JSON.stringify({
+			    amount: sum,
+					to: to.id,
+					dataFrom: from.number,
+					dataTo: to.number
+			  })
+			})
+		  .then((response) => {
+		    return response.json();
+		  })
+			.then((json) => {
+					console.log(json);
+					this.setState({sum: 0});
+					this.props.refreshData();
+		  }).catch((ex) => {
+		    console.log('Error', ex);
+				alert("Ошибка. Платеж не был произведен.")
+		  })
+		}
+
+
 	}
 
 	/**

@@ -171,6 +171,7 @@ class App extends Component {
 						/>
 						<MobilePayment refreshData={this.refreshData.bind(this)} activeCard={activeCard} />
 						<Withdraw
+							refreshData={this.refreshData.bind(this)}
 							activeCard={activeCard}
 							inactiveCardsList={inactiveCardsList}
 						/>
