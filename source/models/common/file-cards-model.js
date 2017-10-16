@@ -30,10 +30,13 @@ class fileCardsModel extends fileModel {
 
   async changeAmount(id, amount) {
     await this.readFile();
-    if (this.itemIDs.indexOf(id) === -1) {
+    if (!id || this.itemIDs.indexOf(id) === -1) {
       throw new ApplicationError("Card not found", 404);
     }
-    const card = await this.getItem(id, 'Item');
+    if (!amount || !((typeof amount === 'string' && amount.match(/^\-?[0-9]+$/)) || typeof amount === 'number')) {
+      throw new ApplicationError("Ether amount sum is not specified/is incorrect/is 0/is null", 400);
+    }
+    const card = await this.getItem(id, 'Card');
     const index = this.dataSource.indexOf(card);
     card.balance = Number(card.balance) + Number(amount);
     this.dataSource.splice(index, 1, card);
