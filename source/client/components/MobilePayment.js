@@ -26,7 +26,7 @@ class MobilePayment extends Component {
 		const success = null;
 		const cardID = this.props.activeCard.id;
 		const balance = this.props.activeCard.balance;
-		const url = `http://localhost:3000/cards/${cardID}/pay`;
+		const url = `https://localhost:3000/cards/${cardID}/pay`;
 		if (sum>balance) {
 			alert("Оплата не произведена: недостаточно средств на счету!");
 			throw new Error("Недостаточно средств на счету!");

@@ -31,7 +31,7 @@ class Prepaid extends Component {
 			alert("Оплата не произведена: недостаточно средств на счету!");
 			throw new Error("Недостаточно средств на счету!");
 		} else {
-			fetch(`http://localhost:3000/cards/${from.id}/transfer`, {
+			fetch(`https://localhost:3000/cards/${from.id}/transfer`, {
 				method: 'POST',
 		 		headers: {
 			 		"Content-type": "application/json"

@@ -934,3 +934,17 @@
 [2017-10-12 16:09:43.058] [INFO] app - GET /index.es.js.map - 1ms
 [2017-10-12 16:10:09.595] [INFO] app - GET /null - 1ms
 [2017-10-12 16:10:09.609] [INFO] app - GET /assets/null-history.svg - 2ms
+[2017-10-17 20:49:12.702] [INFO] app - GET /null - 9ms
+[2017-10-17 20:54:49.992] [INFO] app - GET /public/favicon.ico - 7ms
+[2017-10-17 20:54:50.110] [INFO] app - GET /null - 5ms
+[2017-10-17 20:54:52.942] [INFO] app - GET /null - 1ms
+[2017-10-17 20:54:52.952] [INFO] app - GET /assets/null-history.svg - 1ms
+[2017-10-17 20:56:27.707] [INFO] app - GET /index.es.js.map - 0ms
+[2017-10-17 20:58:11.406] [INFO] app - GET /public/favicon.ico - 4ms
+[2017-10-17 20:58:11.563] [INFO] app - GET /null - 2ms
+[2017-10-17 20:59:48.721] [INFO] app - GET /null - 5ms
+[2017-10-17 20:59:53.227] [INFO] app - GET /assets/null-history.svg - 1ms
+[2017-10-17 20:59:55.863] [INFO] app - GET /null - 1ms
+[2017-10-17 20:59:55.875] [INFO] app - GET /assets/null-history.svg - 3ms
+[2017-10-17 20:59:59.495] [INFO] app - GET /null - 1ms
+[2017-10-17 20:59:59.499] [INFO] app - GET /assets/null-history.svg - 1ms

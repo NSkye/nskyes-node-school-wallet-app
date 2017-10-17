@@ -72,7 +72,7 @@ class App extends Component {
 	}
 
 	refreshData() {
-		fetch("http://localhost:3000/cards")
+		fetch("https://localhost:3000/cards")
 	  .then((response) => {
 	    return response.json();
 	  }).then((json) => {
@@ -81,7 +81,7 @@ class App extends Component {
 				cardsList: newCardsList
 			});
 			console.log("Данные карт обновлены");
-			return fetch("http://localhost:3000/cards/transactions")
+			return fetch("https://localhost:3000/cards/transactions")
 	  })
 		.then((response) => {
 			return response.json();

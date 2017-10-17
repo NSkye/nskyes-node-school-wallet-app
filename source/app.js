@@ -19,11 +19,17 @@ const errorThrower = require('./controllers/error');
 const request = require('supertest');
 
 const path = require('path');
+const http = require('http');
+const https = require('https');
+
+
 const logger = require('../libs/logger')('app');
 const {renderToStaticMarkup} = require('react-dom/server');
 const ApplicationError = require('../libs/application-error');
 const CardsModel = require('./models/cards-model');
 const TransactionsModel = require('./models/transactions-model');
+
+const fs = require('fs');
 
 const app = new Koa();
 
@@ -96,7 +102,7 @@ app.use(async (ctx, next) => {
 // error handler
 app.use(async (ctx, next) => {
 	try {
-		await next();
+		await next();const path = require('path');
 	} catch (err) {
 		logger.error('Error detected', err);
 		ctx.status = err instanceof ApplicationError ? err.status : 500;
@@ -122,6 +128,15 @@ app.use(bodyParser);
 app.use(router.routes());
 app.use(serve('./public'));
 
+/*
 app.listen(port, () => {
 	logger.info('Application started');
 });
+*/
+
+const options = {
+	key: fs.readFileSync(path.join(__dirname, 'SSL', 'key.pem')),
+	cert: fs.readFileSync(path.join(__dirname, 'SSL', 'cert.pem'))
+};
+
+https.createServer(options, app.callback()).listen(port);

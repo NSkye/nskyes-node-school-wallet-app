@@ -57366,7 +57366,7 @@ var Prepaid = function (_Component) {
 				alert("Оплата не произведена: недостаточно средств на счету!");
 				throw new Error("Недостаточно средств на счету!");
 			} else {
-				fetch('http://localhost:3000/cards/' + from.id + '/transfer', {
+				fetch('https://localhost:3000/cards/' + from.id + '/transfer', {
 					method: 'POST',
 					headers: {
 						"Content-type": "application/json"
@@ -58052,7 +58052,7 @@ var MobilePayment = function (_Component) {
 			var success = null;
 			var cardID = this.props.activeCard.id;
 			var balance = this.props.activeCard.balance;
-			var url = 'http://localhost:3000/cards/' + cardID + '/pay';
+			var url = 'https://localhost:3000/cards/' + cardID + '/pay';
 			if (sum > balance) {
 				alert("Оплата не произведена: недостаточно средств на счету!");
 				throw new Error("Недостаточно средств на счету!");
@@ -58699,13 +58699,13 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var WithdrawTitle = /*#__PURE__*/(0, _react4.default)(_.Title, 'css-WithdrawTitle-1ttquec0', [], [], function createEmotionStyledRules() {
+var WithdrawTitle = /*#__PURE__*/(0, _react4.default)(_.Title, 'css-WithdrawTitle-iq0tdm0', [], [], function createEmotionStyledRules() {
 	return {
 		'textAlign': 'center'
 	};
 });
 
-var WithdrawLayout = /*#__PURE__*/(0, _react4.default)(_.Island, 'css-WithdrawLayout-1ttquec1', [], [], function createEmotionStyledRules() {
+var WithdrawLayout = /*#__PURE__*/(0, _react4.default)(_.Island, 'css-WithdrawLayout-iq0tdm1', [], [], function createEmotionStyledRules() {
 	return {
 		'width': '440px',
 		'display': '-webkit-box; display: -ms-flexbox; display: flex',
@@ -58719,14 +58719,14 @@ var WithdrawLayout = /*#__PURE__*/(0, _react4.default)(_.Island, 'css-WithdrawLa
 	};
 });
 
-var InputField = /*#__PURE__*/(0, _react4.default)('div', 'css-InputField-1ttquec2', [], [], function createEmotionStyledRules() {
+var InputField = /*#__PURE__*/(0, _react4.default)('div', 'css-InputField-iq0tdm2', [], [], function createEmotionStyledRules() {
 	return {
 		'margin': '20px 0',
 		'position': 'relative'
 	};
 });
 
-var SumInput = /*#__PURE__*/(0, _react4.default)(_.Input, 'css-SumInput-1ttquec3', [], [], function createEmotionStyledRules() {
+var SumInput = /*#__PURE__*/(0, _react4.default)(_.Input, 'css-SumInput-iq0tdm3', [], [], function createEmotionStyledRules() {
 	return {
 		'maxWidth': '200px',
 		'paddingRight': '20px',
@@ -58735,7 +58735,7 @@ var SumInput = /*#__PURE__*/(0, _react4.default)(_.Input, 'css-SumInput-1ttquec3
 	};
 });
 
-var Currency = /*#__PURE__*/(0, _react4.default)('span', 'css-Currency-1ttquec4', [], [], function createEmotionStyledRules() {
+var Currency = /*#__PURE__*/(0, _react4.default)('span', 'css-Currency-iq0tdm4', [], [], function createEmotionStyledRules() {
 	return {
 		'fontSize': '12px',
 		'position': 'absolute',
@@ -58819,7 +58819,7 @@ var Withdraw = function (_Component) {
 				alert("Оплата не произведена: недостаточно средств на счету!");
 				throw new Error("Недостаточно средств на счету!");
 			} else {
-				fetch('http://localhost:3000/cards/' + from.id + '/transfer', {
+				fetch('https://localhost:3000/cards/' + from.id + '/transfer', {
 					method: 'POST',
 					headers: {
 						"Content-type": "application/json"
@@ -61014,7 +61014,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 	}];
 });
 
-var Wallet = /*#__PURE__*/(0, _react4.default)('div', 'css-Wallet-e973fv0', [], [], function createEmotionStyledRules() {
+var Wallet = /*#__PURE__*/(0, _react4.default)('div', 'css-Wallet-aurbq40', [], [], function createEmotionStyledRules() {
 	return {
 		'display': '-webkit-box; display: -ms-flexbox; display: flex',
 		'minHeight': '100%',
@@ -61022,7 +61022,7 @@ var Wallet = /*#__PURE__*/(0, _react4.default)('div', 'css-Wallet-e973fv0', [], 
 	};
 });
 
-var CardPane = /*#__PURE__*/(0, _react4.default)('div', 'css-CardPane-e973fv1', [], [], function createEmotionStyledRules() {
+var CardPane = /*#__PURE__*/(0, _react4.default)('div', 'css-CardPane-aurbq41', [], [], function createEmotionStyledRules() {
 	return {
 		'WebkitBoxFlex': '1',
 		'msFlexPositive': '1',
@@ -61030,7 +61030,7 @@ var CardPane = /*#__PURE__*/(0, _react4.default)('div', 'css-CardPane-e973fv1', 
 	};
 });
 
-var Workspace = /*#__PURE__*/(0, _react4.default)('div', 'css-Workspace-e973fv2', [], [], function createEmotionStyledRules() {
+var Workspace = /*#__PURE__*/(0, _react4.default)('div', 'css-Workspace-aurbq42', [], [], function createEmotionStyledRules() {
 	return {
 		'display': '-webkit-box; display: -ms-flexbox; display: flex',
 		'msFlexWrap': 'wrap',
@@ -61076,7 +61076,7 @@ var App = function (_Component) {
 		value: function refreshData() {
 			var _this2 = this;
 
-			fetch("http://localhost:3000/cards").then(function (response) {
+			fetch("https://localhost:3000/cards").then(function (response) {
 				return response.json();
 			}).then(function (json) {
 				var newCardsList = _this2.prepareCardsData(json);
@@ -61084,7 +61084,7 @@ var App = function (_Component) {
 					cardsList: newCardsList
 				});
 				console.log("Данные карт обновлены");
-				return fetch("http://localhost:3000/cards/transactions");
+				return fetch("https://localhost:3000/cards/transactions");
 			}).then(function (response) {
 				return response.json();
 			}).then(function (json) {
