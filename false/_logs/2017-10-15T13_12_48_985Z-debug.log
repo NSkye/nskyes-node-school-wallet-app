@@ -1,0 +1,40 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/home/skye/.nvm/versions/node/v8.6.0/bin/node',
+1 verbose cli   '/home/skye/.nvm/versions/node/v8.6.0/bin/npm',
+1 verbose cli   'run',
+1 verbose cli   'test',
+1 verbose cli   '--no-cache' ]
+2 info using npm@5.4.2
+3 info using node@v8.6.0
+4 verbose run-script [ 'pretest', 'test', 'posttest' ]
+5 info lifecycle node-school-wallet-app@1.0.0~pretest: node-school-wallet-app@1.0.0
+6 info lifecycle node-school-wallet-app@1.0.0~test: node-school-wallet-app@1.0.0
+7 verbose lifecycle node-school-wallet-app@1.0.0~test: unsafe-perm in lifecycle true
+8 verbose lifecycle node-school-wallet-app@1.0.0~test: PATH: /home/skye/.nvm/versions/node/v8.6.0/lib/node_modules/npm/bin/node-gyp-bin:/home/skye/Documents/Yandex/nskyes-node-school-wallet-app/node_modules/.bin:/home/skye/.local/share/umake/bin:/home/skye/bin:/home/skye/.local/bin:/home/skye/.nvm/versions/node/v8.6.0/bin:/home/skye/.local/share/umake/bin:/home/skye/bin:/home/skye/.local/bin:/home/skye/.local/share/umake/bin:/home/skye/bin:/home/skye/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin:/snap/bin
+9 verbose lifecycle node-school-wallet-app@1.0.0~test: CWD: /home/skye/Documents/Yandex/nskyes-node-school-wallet-app
+10 silly lifecycle node-school-wallet-app@1.0.0~test: Args: [ '-c', 'jest' ]
+11 silly lifecycle node-school-wallet-app@1.0.0~test: Returned: code: 1  signal: null
+12 info lifecycle node-school-wallet-app@1.0.0~test: Failed to exec test script
+13 verbose stack Error: node-school-wallet-app@1.0.0 test: `jest`
+13 verbose stack Exit status 1
+13 verbose stack     at EventEmitter.<anonymous> (/home/skye/.nvm/versions/node/v8.6.0/lib/node_modules/npm/node_modules/npm-lifecycle/index.js:280:16)
+13 verbose stack     at emitTwo (events.js:125:13)
+13 verbose stack     at EventEmitter.emit (events.js:213:7)
+13 verbose stack     at ChildProcess.<anonymous> (/home/skye/.nvm/versions/node/v8.6.0/lib/node_modules/npm/node_modules/npm-lifecycle/lib/spawn.js:55:14)
+13 verbose stack     at emitTwo (events.js:125:13)
+13 verbose stack     at ChildProcess.emit (events.js:213:7)
+13 verbose stack     at maybeClose (internal/child_process.js:927:16)
+13 verbose stack     at Process.ChildProcess._handle.onexit (internal/child_process.js:211:5)
+14 verbose pkgid node-school-wallet-app@1.0.0
+15 verbose cwd /home/skye/Documents/Yandex/nskyes-node-school-wallet-app
+16 verbose Linux 4.10.0-35-generic
+17 verbose argv "/home/skye/.nvm/versions/node/v8.6.0/bin/node" "/home/skye/.nvm/versions/node/v8.6.0/bin/npm" "run" "test" "--no-cache"
+18 verbose node v8.6.0
+19 verbose npm  v5.4.2
+20 error code ELIFECYCLE
+21 error errno 1
+22 error node-school-wallet-app@1.0.0 test: `jest`
+22 error Exit status 1
+23 error Failed at the node-school-wallet-app@1.0.0 test script.
+23 error This is probably not a problem with npm. There is likely additional logging output above.
+24 verbose exit [ 1, true ]

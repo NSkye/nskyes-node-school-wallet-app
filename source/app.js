@@ -16,6 +16,8 @@ const commitTransfer = require('./controllers/payments/commit-transfer');
 const commitPrepay = require('./controllers/payments/commit-prepay');
 const errorThrower = require('./controllers/error');
 
+const request = require('supertest');
+
 const path = require('path');
 const logger = require('../libs/logger')('app');
 const {renderToStaticMarkup} = require('react-dom/server');
