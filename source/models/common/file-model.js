@@ -4,7 +4,7 @@ const Model = require('./model');
 const ApplicationError = require('../../../libs/application-error')
 
 class fileModel extends Model {
-  constructor (sourceFile) {
+  constructor (sourceFile = '') {
     super();
     this.dataSourceFile = path.join(__dirname, '..', '..', 'data', sourceFile);
     this.dataSource = null;//require(this.dataSourceFile);
@@ -52,7 +52,7 @@ class fileModel extends Model {
     if (typeof item === 'undefined') {
       throw new ApplicationError(`${itemName} not found`, 404);
     } else {
-      return await item;
+      return item;
     }
   }
 

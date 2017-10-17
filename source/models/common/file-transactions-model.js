@@ -3,6 +3,8 @@ const fileModel = require('./file-model');
 const fs = require('fs');
 const path = require('path');
 const ApplicationError = require('../../../libs/application-error');
+const iso = require('../../../libs/ISO8601')
+
 
 class fileTransactionsModel extends fileModel {
   constructor(sourceFile, cardsSource = null) {
@@ -27,7 +29,8 @@ class fileTransactionsModel extends fileModel {
     if(isValid) {
       transaction.id = await this.generateID();
       transaction.cardId = cardID;
-      transaction.time = Date();
+      const date = new Date();
+      transaction.time = iso(date);
       this.dataSource.push(transaction);
       await this.saveUpdates();
       return await transaction;

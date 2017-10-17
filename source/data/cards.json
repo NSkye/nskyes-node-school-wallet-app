@@ -1,67 +1,12 @@
 [
     {
         "cardNumber": "4561261212345467",
-        "balance": -126,
-        "id": 2
-    },
-    {
-        "cardNumber": "4561261212345467",
-        "balance": "42",
-        "id": 7
-    },
-    {
-        "cardNumber": "4561261212345467",
-        "balance": 210,
-        "id": 8
-    },
-    {
-        "cardNumber": "4561261212345467",
-        "balance": -168,
-        "id": 9
-    },
-    {
-        "cardNumber": "4561261212345467",
-        "balance": "42",
-        "id": 10
-    },
-    {
-        "cardNumber": "4561261212345467",
-        "balance": "42",
-        "id": 11
-    },
-    {
-        "cardNumber": "4561261212345467",
-        "balance": "42",
-        "id": 12
-    },
-    {
-        "cardNumber": "4561261212345467",
-        "balance": "42",
-        "id": 13
-    },
-    {
-        "cardNumber": "4561261212345467",
-        "balance": "42",
-        "id": 14
-    },
-    {
-        "cardNumber": "4561261212345467",
-        "balance": "42",
-        "id": 15
-    },
-    {
-        "cardNumber": "4561261212345467",
-        "balance": "42",
-        "id": 16
-    },
-    {
-        "cardNumber": "4561261212345467",
-        "balance": "42",
-        "id": 18
-    },
-    {
-        "cardNumber": "4561261212345467",
-        "balance": 42,
+        "balance": 3999502,
         "id": 19
+    },
+    {
+        "cardNumber": "546925000000000",
+        "balance": 4000088,
+        "id": 20
     }
 ]

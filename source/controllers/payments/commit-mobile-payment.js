@@ -11,19 +11,19 @@ module.exports = async (ctx) => {
    await  new cardsModel().changeAmount(cardID, Number(payment.amount) * -1);
    const transaction = await new transactionsModel(cards)
     .addTransaction({
-      data: '+79000000000',
+      data: '+79218908064',
       type: 'paymentMobile',
-      sum: (payment.amount * -1)
+      sum: Number(payment.amount) * -1
     }, cardID);
    ctx.body = transaction;
   } catch (e) {
     if (e.status) {
       ctx.status = e.status;
-      ctx.body = e.message;
+      ctx.body = e;
     }
     else {
       ctx.status = 500;
-      ctx.body = e.message;
+      ctx.body = e;
     }
   }
 };

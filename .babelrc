@@ -1,0 +1,8 @@
+{
+	"presets": ["env", "es2015", "react"],
+	"plugins": [
+		"emotion",
+		["import", {libraryName: "antd", style: "css"}],
+    ["syntax-async-functions","transform-regenerator"]
+	]
+}
